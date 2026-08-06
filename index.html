@@ -2178,6 +2178,18 @@
         .video-card.playing video {
             opacity: 1;
             pointer-events: auto;
+            z-index: 4;
+        }
+
+        /* 播放时隐藏封面图，避免遮挡视频画面 */
+        .video-card.playing .vc-img {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .video-card.playing .video-cover {
+            opacity: 0;
+            pointer-events: none;
         }
 
         /* 视频封面真实帧 */
@@ -2281,11 +2293,6 @@
             background: var(--accent-gradient);
             border-color: transparent;
             transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        .video-card.playing .video-cover {
-            opacity: 0;
-            pointer-events: none;
         }
 
         .video-card .v-info {
