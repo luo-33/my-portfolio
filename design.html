@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平面设计</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="personal/images/logo.png" alt="罗子欣" class="logo-img">
+        <nav>
+            <a href="personal.html">简历</a>
+            <a href="video.html">视频作品</a>
+            <a href="design.html" class="active">平面设计</a>
+            <a href="index.html">个人账号</a>
+            <a href="communication.html">联系我</a>
+        </nav>
+    </header>
+
+    <!-- 动态设计感首页大图（新媒体主题） -->
+    <div class="hero-banner">
+        <div class="hero-bg">
+            <!-- 深海光线效果 -->
+            <div class="deep-light"></div>
+            
+            <!-- 浮游生物光点 -->
+            <div class="plankton plankton-1"></div>
+            <div class="plankton plankton-2"></div>
+            <div class="plankton plankton-3"></div>
+            <div class="plankton plankton-4"></div>
+            <div class="plankton plankton-5"></div>
+            <div class="plankton plankton-6"></div>
+            <div class="plankton plankton-7"></div>
+            <div class="plankton plankton-8"></div>
+
+            <!-- 鲸鱼容器 -->
+            <div class="whale-container">
+                <!-- 主鲸鱼 -->
+                <div class="whale">
+                    <div class="whale-body">
+                        <div class="whale-eye"></div>
+                        <div class="whale-mouth"></div>
+                        <div class="whale-fin"></div>
+                        <div class="whale-spout"></div>
+                        <div class="bubble bubble-1"></div>
+                        <div class="bubble bubble-2"></div>
+                        <div class="bubble bubble-3"></div>
+                        <div class="bubble bubble-4"></div>
+                        <div class="bubble bubble-5"></div>
+                    </div>
+                    <div class="whale-tail"></div>
+                </div>
+                <!-- 第二只鲸鱼（远处） -->
+                <div class="whale-2">
+                    <div class="whale-body">
+                        <div class="whale-eye"></div>
+                        <div class="whale-fin"></div>
+                    </div>
+                    <div class="whale-tail"></div>
+                </div>
+            </div>
+        </div>
+        <div class="media-elements">
+            <div class="media-icon camera-icon">
+                <div class="camera-body">
+                    <div class="camera-lens"></div>
+                    <div class="camera-flash"></div>
+                </div>
+            </div>
+            <div class="social-tags">
+                <span class="social-tag">#海报设计</span>
+                <span class="social-tag">#修图</span>
+                <span class="social-tag">#排版</span>
+                <span class="social-tag">#AI绘画</span>
+            </div>
+            <div class="metrics">
+                <div class="metric-item">
+                    <span class="metric-num">30+</span>
+                    <span class="metric-label">设计作品</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-num">多项</span>
+                    <span class="metric-label">设计奖项</span>
+                </div>
+            </div>
+        </div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-subtitle">Design Portfolio</p>
+            <h1 class="hero-title">平面设计</h1>
+            <p class="hero-tagline">PS · LR · Canva · 创意视觉</p>
+            <div class="hero-cta">
+                <span class="scroll-hint">↓ 向下浏览作品</span>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- 海报设计（缩略图网格 + 点击放大） -->
+        <div class="content-card">
+            <h2>🎨 海报设计</h2>
+            <div class="thumb-grid" id="posterGrid">
+                <div class="thumb-item" onclick="openLightbox('poster', 0)">
+                    <img src="personal/images/design/海报1.png" alt="海报 1">
+                    <div class="thumb-overlay"><span>海报 1</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('poster', 1)">
+                    <img src="personal/images/design/海报2.png" alt="海报 2">
+                    <div class="thumb-overlay"><span>海报 2</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('poster', 2)">
+                    <img src="personal/images/design/海报3.jpg" alt="海报 3">
+                    <div class="thumb-overlay"><span>海报 3</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('poster', 3)">
+                    <img src="personal/images/design/海报4.jpg" alt="海报 4">
+                    <div class="thumb-overlay"><span>海报 4</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('poster', 4)">
+                    <img src="personal/images/design/使用场景板绘1.jpg" alt="板绘 1">
+                    <div class="thumb-overlay"><span>板绘 1</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('poster', 5)">
+                    <img src="personal/images/design/使用场景板绘2.jpg" alt="板绘 2">
+                    <div class="thumb-overlay"><span>板绘 2</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('poster', 6)">
+                    <img src="personal/images/design/使用场景板绘3.jpg" alt="板绘 3">
+                    <div class="thumb-overlay"><span>板绘 3</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 公众号排版（缩略图网格 + 点击放大） -->
+        <div class="content-card">
+            <h2>📱 公众号排版</h2>
+            <div class="thumb-grid" id="wechatGrid">
+                <div class="thumb-item" onclick="openLightbox('wechat', 0)">
+                    <img src="personal/images/poster/奥德赛.png" alt="奥德赛">
+                    <div class="thumb-overlay"><span>奥德赛</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('wechat', 1)">
+                    <img src="personal/images/poster/人与人.png" alt="人与人">
+                    <div class="thumb-overlay"><span>人与人</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('wechat', 2)">
+                    <img src="personal/images/poster/实习.png" alt="实习">
+                    <div class="thumb-overlay"><span>实习</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('wechat', 3)">
+                    <img src="personal/images/poster/小王子.png" alt="小王子">
+                    <div class="thumb-overlay"><span>小王子</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('wechat', 4)">
+                    <img src="personal/images/poster/长衫.png" alt="长衫">
+                    <div class="thumb-overlay"><span>长衫</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('wechat', 5)">
+                    <img src="personal/images/poster/账号介绍.png" alt="账号介绍">
+                    <div class="thumb-overlay"><span>账号介绍</span></div>
+                </div>
+                <div class="thumb-item" onclick="openLightbox('wechat', 6)">
+                    <img src="personal/images/poster/AI.png" alt="AI">
+                    <div class="thumb-overlay"><span>AI</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 拍摄作品（分类按钮 + 切换展示） -->
+        <div class="content-card">
+            <h2>📸 拍摄作品</h2>
+            <div class="photo-tabs">
+                <button class="photo-tab active" onclick="switchPhoto(0)">人像摄影</button>
+                <button class="photo-tab" onclick="switchPhoto(1)">环境人像</button>
+                <button class="photo-tab" onclick="switchPhoto(2)">创意摄影</button>
+                <button class="photo-tab" onclick="switchPhoto(3)">纪实摄影</button>
+            </div>
+            <div class="photo-show">
+                <img id="photoDisplay" src="personal/photo/未标题-3.png" alt="拍摄作品">
+                <div class="photo-name" id="photoName">人像摄影</div>
+            </div>
+        </div>
+
+        <!-- 设计技能卡片 -->
+        <div class="content-card">
+            <h2>设计工具</h2>
+            <div class="skill-tags">
+                <span class="tag">Photoshop</span>
+                <span class="tag">Lightroom</span>
+                <span class="tag">Canva</span>
+                <span class="tag">海报设计</span>
+                <span class="tag">修图调色</span>
+                <span class="tag">排版设计</span>
+                <span class="tag">AI绘画</span>
+                <span class="tag">创意概念</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- 灯箱（Lightbox） -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="作品预览">
+            <div class="lightbox-nav">
+                <span class="lightbox-prev" onclick="changeImage(-1)">‹</span>
+                <span class="lightbox-next" onclick="changeImage(1)">›</span>
+            </div>
+            <div class="lightbox-counter" id="lightbox-counter">1 / 1</div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 欢迎来到 罗子欣 个人作品集</p>
+        <div class="footer-social-mini">
+            <a href="#" title="小红书">📕</a>
+            <a href="#" title="抖音">🎵</a>
+            <a href="#" title="微博">📸</a>
+            <a href="mailto:1953294146@qq.com" title="邮箱">✉️</a>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()" aria-label="返回顶部">↑</button>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 400) {
+                btn.classList.add('show');
+            } else {
+                btn.classList.remove('show');
+            }
+        });
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== 灯箱（Lightbox）功能 =====
+        const lightboxData = {
+            poster: [
+                { src: 'personal/images/design/海报1.png', name: '海报 1' },
+                { src: 'personal/images/design/海报2.png', name: '海报 2' },
+                { src: 'personal/images/design/海报3.jpg', name: '海报 3' },
+                { src: 'personal/images/design/海报4.jpg', name: '海报 4' },
+                { src: 'personal/images/design/使用场景板绘1.jpg', name: '板绘 1' },
+                { src: 'personal/images/design/使用场景板绘2.jpg', name: '板绘 2' },
+                { src: 'personal/images/design/使用场景板绘3.jpg', name: '板绘 3' }
+            ],
+            wechat: [
+                { src: 'personal/images/poster/奥德赛.png', name: '奥德赛' },
+                { src: 'personal/images/poster/人与人.png', name: '人与人' },
+                { src: 'personal/images/poster/实习.png', name: '实习' },
+                { src: 'personal/images/poster/小王子.png', name: '小王子' },
+                { src: 'personal/images/poster/长衫.png', name: '长衫' },
+                { src: 'personal/images/poster/账号介绍.png', name: '账号介绍' },
+                { src: 'personal/images/poster/AI.png', name: 'AI' }
+            ]
+        };
+
+        let lightboxCurrent = { type: 'poster', index: 0 };
+
+        function openLightbox(type, index) {
+            lightboxCurrent.type = type;
+            lightboxCurrent.index = index;
+            const data = lightboxData[type];
+            document.getElementById('lightbox-img').src = data[index].src;
+            document.getElementById('lightbox-counter').textContent = (index + 1) + ' / ' + data.length;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function changeImage(direction) {
+            const type = lightboxCurrent.type;
+            const data = lightboxData[type];
+            lightboxCurrent.index += direction;
+            if (lightboxCurrent.index < 0) lightboxCurrent.index = data.length - 1;
+            if (lightboxCurrent.index >= data.length) lightboxCurrent.index = 0;
+            document.getElementById('lightbox-img').src = data[lightboxCurrent.index].src;
+            document.getElementById('lightbox-counter').textContent = (lightboxCurrent.index + 1) + ' / ' + data.length;
+        }
+
+        // 键盘左右键切换
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').classList.contains('active')) {
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // 点击背景关闭
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
+        });
+
+        // ===== 拍摄作品切换 =====
+        const photoData = [
+            { src: 'personal/photo/未标题-3.png', name: '人像摄影' },
+            { src: 'personal/photo/未标题-4.png', name: '环境人像' },
+            { src: 'personal/photo/未标题-5.png', name: '创意摄影' },
+            { src: 'personal/photo/未标题-6.png', name: '纪实摄影' }
+        ];
+
+        function switchPhoto(index) {
+            // 更新按钮状态
+            document.querySelectorAll('.photo-tab').forEach(function(tab, i) {
+                tab.classList.toggle('active', i === index);
+            });
+            // 更新图片
+            document.getElementById('photoDisplay').src = photoData[index].src;
+            document.getElementById('photoName').textContent = photoData[index].name;
+        }
+    </script>
+
+</body>
+</html>

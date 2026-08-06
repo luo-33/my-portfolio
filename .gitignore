@@ -1,0 +1,9 @@
+_backup_videos/
+_deploy/
+_web_videos/
+_web_videos_v2/
+compress_videos.py
+compress_v2.py
+add_work.py
+extract_covers.py
+inject_covers.py
