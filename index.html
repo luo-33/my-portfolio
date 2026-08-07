@@ -2192,6 +2192,25 @@
             pointer-events: none;
         }
 
+        /* 触摸设备（手机/平板）：直接使用原生视频播放器，跳过自定义封面层 */
+        @media (hover: none) {
+            .video-card .video-cover {
+                display: none;
+            }
+            .video-card .vc-img {
+                display: none;
+            }
+            .video-card video {
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                z-index: 1 !important;
+                position: relative;
+            }
+            .video-card.playing video {
+                z-index: 4 !important;
+            }
+        }
+
         /* 视频封面真实帧 */
         .video-card .vc-img {
             position: absolute;
@@ -3356,7 +3375,7 @@
                                 <span class="vc-bottom">增城文旅宣传片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/team/增城宣传片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/team-video/增城宣传片.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/team-video/增城宣传片.mp4" poster="personal/images/covers/team/增城宣传片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 01 &middot; TEAM</div>
@@ -3373,7 +3392,7 @@
                                 <span class="vc-bottom">国家资助贷款宣传片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/team/国家资助贷款宣传片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/team-video/国家资助贷款宣传片.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/team-video/国家资助贷款宣传片.mp4" poster="personal/images/covers/team/国家资助贷款宣传片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 02 &middot; TEAM</div>
@@ -3390,7 +3409,7 @@
                                 <span class="vc-bottom">兰州拉面宣传片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/team/兰州拉面宣传片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/team-video/兰州拉面宣传片.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/team-video/兰州拉面宣传片.mp4" poster="personal/images/covers/team/兰州拉面宣传片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 03 &middot; TEAM</div>
@@ -3407,7 +3426,7 @@
                                 <span class="vc-bottom">哇哈哈品牌宣传片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/team/哇哈哈宣传片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/team-video/哇哈哈宣传片.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/team-video/哇哈哈宣传片.mp4" poster="personal/images/covers/team/哇哈哈宣传片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 04 &middot; TEAM</div>
@@ -3424,7 +3443,7 @@
                                 <span class="vc-bottom">HBN 护肤宣传片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/team/HBN宣传片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/team-video/HBN宣传片.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/team-video/HBN宣传片.mp4" poster="personal/images/covers/team/HBN宣传片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 05 &middot; TEAM</div>
@@ -3441,7 +3460,7 @@
                                 <span class="vc-bottom">性别平等倡导片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/team/性别平等倡导片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/team-video/性别平等倡导片.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/team-video/性别平等倡导片.mp4" poster="personal/images/covers/team/性别平等倡导片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 06 &middot; TEAM</div>
@@ -3458,7 +3477,7 @@
                                 <span class="vc-bottom">朋友情感小短片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/team/朋友情感小短片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/team-video/朋友情感小短片.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/team-video/朋友情感小短片.mp4" poster="personal/images/covers/team/朋友情感小短片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 07 &middot; TEAM</div>
@@ -3475,7 +3494,7 @@
                                 <span class="vc-bottom">朋友情感小短片 II</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/team/朋友情感小短片2.jpg" alt="" loading="lazy">
-                            <video src="personal/images/team-video/朋友情感小短片2.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/team-video/朋友情感小短片2.mp4" poster="personal/images/covers/team/朋友情感小短片2.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 08 &middot; TEAM</div>
@@ -3498,7 +3517,7 @@
                                 <span class="vc-bottom">毕业 VLOG</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/person/毕业VLOG.jpg" alt="" loading="lazy">
-                            <video src="personal/images/person-video/毕业VLOG.mov" preload="none" playsinline controls></video>
+                            <video src="personal/images/person-video/毕业VLOG.mov" poster="personal/images/covers/person/毕业VLOG.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 01 &middot; SELF</div>
@@ -3515,7 +3534,7 @@
                                 <span class="vc-bottom">海边自制短片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/person/海边自制短片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/person-video/海边自制短片.mp4" preload="none" playsinline controls></video>
+                            <video src="personal/images/person-video/海边自制短片.mp4" poster="personal/images/covers/person/海边自制短片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 02 &middot; SELF</div>
@@ -3532,7 +3551,7 @@
                                 <span class="vc-bottom">旅游短片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/person/旅游短片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/person-video/旅游短片.MP4" preload="none" playsinline controls></video>
+                            <video src="personal/images/person-video/旅游短片.MP4" poster="personal/images/covers/person/旅游短片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 03 &middot; SELF</div>
@@ -3549,7 +3568,7 @@
                                 <span class="vc-bottom">爬山短片</span>
                             </div>
                             <img class="vc-img" src="personal/images/covers/person/爬山短片.jpg" alt="" loading="lazy">
-                            <video src="personal/images/person-video/爬山短片.MP4" preload="none" playsinline controls></video>
+                            <video src="personal/images/person-video/爬山短片.MP4" poster="personal/images/covers/person/爬山短片.jpg" preload="none" playsinline controls></video>
                         </div>
                         <div class="v-info">
                             <div class="v-num">/ 04 &middot; SELF</div>
@@ -4310,6 +4329,18 @@
             const video = card.querySelector('video');
             if (!video) return;
 
+            const tryPlay = () => {
+                const p = video.play();
+                if (p && p.catch) {
+                    p.catch(() => {
+                        // play() 被拒绝（移动端常见）：重新加载后再试
+                        video.load();
+                        const retry = video.play();
+                        if (retry && retry.catch) retry.catch(() => {});
+                    });
+                }
+            };
+
             if (cover) {
                 cover.addEventListener('click', (e) => {
                     e.stopPropagation();
@@ -4323,10 +4354,19 @@
                             if (oc) { oc.style.opacity = ''; oc.style.pointerEvents = ''; }
                         }
                     });
-                    video.play();
                     card.classList.add('playing');
+                    tryPlay();
                 });
             }
+
+            // 触摸设备：video 直接用原生控件播放（cover 已隐藏）
+            video.addEventListener('click', (e) => {
+                if (matchMedia('(hover: none)').matches && video.paused && video.currentTime === 0) {
+                    e.stopPropagation();
+                    card.classList.add('playing');
+                    tryPlay();
+                }
+            });
 
             video.addEventListener('pause', () => {
                 if (video.currentTime < video.duration - 0.1) {
