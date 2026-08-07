@@ -2211,6 +2211,27 @@
             }
         }
 
+        /* 视频加载中指示器（触摸设备点击后显示） */
+        .video-card.loading .video-stage::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin: -20px 0 0 -20px;
+            border: 3px solid rgba(255, 255, 255, 0.35);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* 视频封面真实帧 */
         .video-card .vc-img {
             position: absolute;
@@ -4324,19 +4345,31 @@
         bind3D(document.getElementById('avatar3d'), { max: 18 });
 
         // ========== 视频封面点击播放 ==========
+        const isTouch = matchMedia('(hover: none)').matches;
         document.querySelectorAll('.video-card').forEach(card => {
             const cover = card.querySelector('.video-cover');
             const video = card.querySelector('video');
             if (!video) return;
 
+            // 触摸设备：预加载元数据，避免 iOS Safari 点击 poster 后"没反应"
+            if (isTouch) {
+                video.preload = 'metadata';
+            }
+
             const tryPlay = () => {
+                // 确保数据可用后再播放
+                if (video.readyState < 2) {
+                    video.load();
+                }
                 const p = video.play();
                 if (p && p.catch) {
                     p.catch(() => {
-                        // play() 被拒绝（移动端常见）：重新加载后再试
+                        // play() 被拒绝（移动端常见）：加载后延迟重试
                         video.load();
-                        const retry = video.play();
-                        if (retry && retry.catch) retry.catch(() => {});
+                        setTimeout(() => {
+                            const retry = video.play();
+                            if (retry && retry.catch) retry.catch(() => {});
+                        }, 350);
                     });
                 }
             };
@@ -4359,24 +4392,29 @@
                 });
             }
 
-            // 触摸设备：video 直接用原生控件播放（cover 已隐藏）
-            video.addEventListener('click', (e) => {
-                if (matchMedia('(hover: none)').matches && video.paused && video.currentTime === 0) {
-                    e.stopPropagation();
-                    card.classList.add('playing');
-                    tryPlay();
+            // 触摸设备：优先交给 iOS 原生播放器处理；若没反应则 JS 兜底
+            video.addEventListener('click', () => {
+                if (isTouch) {
+                    card.classList.add('loading');
+                    setTimeout(() => {
+                        if (video.paused) tryPlay();
+                    }, 150);
                 }
             });
 
+            video.addEventListener('play', () => {
+                card.classList.remove('loading');
+                card.classList.add('playing');
+            });
             video.addEventListener('pause', () => {
                 if (video.currentTime < video.duration - 0.1) {
                     if (cover) { cover.style.opacity = ''; cover.style.pointerEvents = ''; }
-                    card.classList.remove('playing');
+                    card.classList.remove('playing', 'loading');
                 }
             });
             video.addEventListener('ended', () => {
                 if (cover) { cover.style.opacity = ''; cover.style.pointerEvents = ''; }
-                card.classList.remove('playing');
+                card.classList.remove('playing', 'loading');
             });
         });
 
