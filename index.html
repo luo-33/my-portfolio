@@ -1839,23 +1839,16 @@
 
         .stamp-img {
             position: relative;
-            width: 110px;
-            height: 190px;
+            width: 130px;
+            height: 220px;
             border-radius: 3px;
-            background: #f3f3f3;
+            background-color: #f3f3f3;
+            background-image: url('personal/images/hero/ip-stamp.png?v=4');
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center top;
             flex-shrink: 0;
-            /* 取消 overflow:hidden，避免任何顶部裁剪 */
             overflow: visible;
-        }
-
-        .stamp-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center top;
-            display: block;
-            position: relative;
-            z-index: 2;
         }
 
         .stamp-ring {
@@ -1953,7 +1946,7 @@
             .contact-sign { padding: 24px 18px; margin-top: 36px; }
             .sign-text { font-size: 0.88rem; }
             .stamp-photo { padding: 4px 4px 12px 4px; }
-            .stamp-img { width: 86px; height: 148px; }
+            .stamp-img { width: 100px; height: 170px; }
             .stamp-name { font-size: 1rem; }
             .postmark { width: 48px; height: 48px; right: 72px; font-size: 0.45rem; }
         }
@@ -4383,9 +4376,7 @@
                         <!-- IP 形象：明信片照片 -->
                         <div class="sign-stamp">
                             <div class="stamp-photo">
-                                <div class="stamp-img">
-                                    <img src="personal/images/hero/ip-stamp.png?v=3" alt="LZX IP" loading="lazy">
-                                </div>
+                                <div class="stamp-img" role="img" aria-label="LZX IP"></div>
                                 <div class="stamp-ring"></div>
                             </div>
                             <div class="stamp-info">
