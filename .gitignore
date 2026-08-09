@@ -9,3 +9,6 @@ compress_v3.py
 add_work.py
 extract_covers.py
 inject_covers.py
+
+# 片头动画源项目（remotion，含 node_modules，不入仓库）
+hero-animation/
