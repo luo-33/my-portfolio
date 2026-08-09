@@ -464,29 +464,18 @@
             filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.10));
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
             transform: translateZ(0);
-            /* 轻微纸张底色，让它和页面背景自然融合 */
-            background: rgba(255, 255, 255, 0.35);
-            border-radius: 18px;
-            padding: 18px 28px;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border: 1px solid rgba(0, 0, 0, 0.04);
         }
 
         .hero-name-art:hover {
             transform: translateY(-8px) scale(1.015);
             filter: drop-shadow(0 24px 48px rgba(200, 75, 75, 0.18));
-            background: rgba(255, 255, 255, 0.50);
         }
 
         [data-theme="dark"] .hero-name-art {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.08);
             filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.4));
         }
 
         [data-theme="dark"] .hero-name-art:hover {
-            background: rgba(255, 255, 255, 0.10);
             filter: drop-shadow(0 24px 48px rgba(255, 107, 107, 0.22));
         }
 
@@ -800,12 +789,11 @@
 
         .about-avatar .avatar-3d-wrap {
             width: 180px;
-            height: 220px;
         }
 
         .about-avatar .avatar-3d {
-            height: 100%;
-            aspect-ratio: unset;
+            height: auto;
+            aspect-ratio: 1 / 1;
         }
 
         .avatar-meta {
@@ -922,7 +910,7 @@
         @media (max-width: 720px) {
             .about-grid { grid-template-columns: 1fr; gap: 32px; }
             .about-avatar { flex-direction: row; gap: 18px; align-items: center; }
-            .about-avatar .avatar-3d-wrap { width: 100px; height: 120px; }
+            .about-avatar .avatar-3d-wrap { width: 100px; }
             .about-stats { grid-template-columns: repeat(2, 1fr); }
             .about-left p { font-size: 1.15rem; }
         }
@@ -2309,7 +2297,7 @@
 
         .avatar-3d {
             position: relative;
-            aspect-ratio: 1 / 1.15;
+            aspect-ratio: 1 / 1;
             border-radius: 20px;
             overflow: hidden;
             transform-style: preserve-3d;
@@ -2342,19 +2330,6 @@
             object-fit: cover;
             display: block;
             transform: translateZ(20px);
-        }
-
-        .avatar-3d::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                to bottom,
-                transparent 60%,
-                rgba(0, 0, 0, 0.3) 100%
-            );
-            z-index: 2;
-            transform: translateZ(30px);
         }
 
         .avatar-3d::after {
@@ -3520,7 +3495,7 @@
                 <div class="about-avatar reveal">
                     <div class="avatar-3d-wrap">
                         <div class="avatar-3d" id="avatar3d">
-                            <img src="personal/images/微信图片_20260706111311_160_1.jpg" alt="罗子欣" loading="lazy">
+                            <img src="personal/images/ip-avatar.png" alt="罗子欣" loading="lazy">
                         </div>
                     </div>
                     <div class="avatar-meta">
