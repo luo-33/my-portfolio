@@ -1695,16 +1695,25 @@
         }
 
         /* ============================================
-           Contact - "灵感时刻" 签名版（填满底部空白）
+           Contact - 明信片 Personal IP
            ============================================ */
         .contact-sign {
             margin-top: 56px;
             padding: 32px 28px;
-            background: var(--bg-elevated);
+            background: linear-gradient(135deg, #fffdf9 0%, var(--bg-elevated) 100%);
             border: 1px dashed var(--line-strong);
-            border-radius: 20px;
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
+            box-shadow:
+                0 18px 40px -15px rgba(0, 0, 0, 0.08),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            transform: rotate(-0.6deg);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-sign:hover {
+            transform: rotate(0deg);
         }
 
         .contact-sign::before {
@@ -1717,6 +1726,43 @@
             background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
             pointer-events: none;
             animation: glowMove 8s ease-in-out infinite alternate;
+            opacity: 0.6;
+        }
+
+        .postcard-watermark {
+            position: absolute;
+            top: 16px;
+            right: 22px;
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            font-weight: 700;
+            color: var(--text-mute);
+            opacity: 0.22;
+            transform: rotate(-4deg);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .postmark {
+            position: absolute;
+            top: 18px;
+            right: 84px;
+            width: 58px;
+            height: 58px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            opacity: 0.22;
+            pointer-events: none;
+            z-index: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.5rem;
+            line-height: 1.3;
+            text-align: center;
+            color: var(--accent);
+            font-family: 'Courier New', monospace;
+            transform: rotate(-18deg);
         }
 
         @keyframes glowMove {
@@ -1725,74 +1771,96 @@
         }
 
         [data-theme="dark"] .contact-sign {
-            background: rgba(255, 255, 255, 0.03);
-            border-color: rgba(255, 255, 255, 0.12);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-color: rgba(255, 255, 255, 0.14);
+        }
+
+        [data-theme="dark"] .postmark {
+            opacity: 0.18;
         }
 
         .sign-quote {
             display: flex;
             gap: 16px;
-            margin-bottom: 28px;
+            margin-bottom: 26px;
             position: relative;
             z-index: 1;
         }
 
         .sign-mark {
-            font-size: 56px;
-            line-height: 0.8;
+            font-size: 52px;
+            line-height: 0.85;
             color: var(--accent);
             font-family: 'Georgia', serif;
             font-weight: 700;
             flex-shrink: 0;
-            margin-top: 6px;
-            opacity: 0.85;
+            margin-top: 4px;
+            opacity: 0.8;
         }
 
         .sign-text {
             color: var(--text-soft);
-            font-size: 0.96rem;
-            line-height: 1.8;
+            font-size: 0.95rem;
+            line-height: 1.75;
             margin: 0;
             font-family: 'Songti SC', 'Georgia', serif;
             letter-spacing: 0.02em;
+            font-style: italic;
         }
 
-        /* IP 形象小章 */
+        /* IP 形象：明信片照片 */
         .sign-stamp {
             display: flex;
             align-items: center;
-            gap: 18px;
-            padding: 14px 0;
+            gap: 22px;
+            padding: 18px 0;
             border-top: 1px dashed var(--line);
             border-bottom: 1px dashed var(--line);
             position: relative;
             z-index: 1;
         }
 
+        .stamp-photo {
+            position: relative;
+            flex-shrink: 0;
+            padding: 5px 5px 16px 5px;
+            background: #fff;
+            border-radius: 3px;
+            box-shadow: 0 10px 22px -8px rgba(0, 0, 0, 0.14);
+            transform: rotate(-3deg);
+            transition: transform 0.4s ease;
+        }
+
+        .stamp-photo:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
         .stamp-img {
             position: relative;
-            width: 72px;
-            height: 72px;
+            width: 82px;
+            height: 116px;
+            border-radius: 3px;
+            overflow: hidden;
+            background: #f3f3f3;
             flex-shrink: 0;
         }
 
         .stamp-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            filter: contrast(1.05) saturate(0.95);
+            object-fit: contain;
+            display: block;
             position: relative;
             z-index: 2;
         }
 
         .stamp-ring {
             position: absolute;
-            inset: -6px;
+            inset: -5px;
             border: 1.5px dashed var(--accent);
-            border-radius: 50%;
+            border-radius: 6px;
             animation: ringSpin 20s linear infinite;
-            opacity: 0.5;
+            opacity: 0.45;
         }
 
         @keyframes ringSpin {
@@ -1803,18 +1871,18 @@
         .stamp-info {
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 5px;
         }
 
         .stamp-label {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             letter-spacing: 3px;
             color: var(--text-mute);
             font-weight: 600;
         }
 
         .stamp-name {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: var(--text);
             letter-spacing: 2px;
@@ -1822,16 +1890,16 @@
         }
 
         .stamp-meta {
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             color: var(--text-mute);
             letter-spacing: 1px;
         }
 
-        /* 个人标签 chip */
+        /* 个人标签：邮票小 chip */
         .sign-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 9px;
             margin-top: 22px;
             position: relative;
             z-index: 1;
@@ -1841,30 +1909,49 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            padding: 6px 14px;
-            font-size: 0.82rem;
-            background: var(--bg-soft);
-            border: 1px solid var(--line);
-            border-radius: 999px;
+            padding: 5px 12px;
+            font-size: 0.78rem;
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px dashed var(--line-strong);
+            border-radius: 4px;
             color: var(--text-soft);
             transition: all 0.25s ease;
+            transform: rotate(-1deg);
+            box-shadow: 0 2px 0 rgba(0, 0, 0, 0.03);
+        }
+
+        .tag-chip:nth-child(2n) {
+            transform: rotate(1.2deg);
+        }
+
+        .tag-chip:nth-child(3n) {
+            transform: rotate(-0.8deg);
         }
 
         .tag-chip:hover {
             border-color: var(--accent);
             color: var(--accent);
-            transform: translateY(-1px);
+            transform: rotate(0deg) translateY(-2px);
+            background: rgba(255, 255, 255, 0.85);
         }
 
         [data-theme="dark"] .tag-chip {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.18);
+        }
+
+        [data-theme="dark"] .tag-chip:hover {
+            background: rgba(255, 255, 255, 0.10);
         }
 
         /* 移动端适配 */
         @media (max-width: 720px) {
             .contact-sign { padding: 24px 18px; margin-top: 36px; }
-            .sign-text { font-size: 0.9rem; }
-            .stamp-img { width: 56px; height: 56px; }
+            .sign-text { font-size: 0.88rem; }
+            .stamp-photo { padding: 4px 4px 12px 4px; }
+            .stamp-img { width: 68px; height: 96px; }
+            .stamp-name { font-size: 1rem; }
+            .postmark { width: 48px; height: 48px; right: 72px; font-size: 0.45rem; }
         }
 
         /* ============================================
@@ -4277,8 +4364,10 @@
                     <h2>来和我<br><span class="it">聊聊</span> 吧 &#9786;</h2>
                     <p>无论是工作机会、项目合作，或者只是想交流创作，都欢迎通过下面的方式找到我。</p>
 
-                    <!-- 灵感时刻：填满底部空白 + 体现 IP -->
+                    <!-- 灵感时刻：明信片 + IP -->
                     <div class="contact-sign reveal" data-delay="2">
+                        <div class="postcard-watermark">POSTCARD</div>
+                        <div class="postmark">LZX<br>2026</div>
                         <div class="sign-quote">
                             <span class="sign-mark">&#10077;</span>
                             <p class="sign-text">
@@ -4287,10 +4376,12 @@
                             </p>
                         </div>
 
-                        <!-- IP 形象小章 -->
+                        <!-- IP 形象：明信片照片 -->
                         <div class="sign-stamp">
-                            <div class="stamp-img">
-                                <img src="personal/images/hero/ip-stamp.png" alt="LZX IP" loading="lazy">
+                            <div class="stamp-photo">
+                                <div class="stamp-img">
+                                    <img src="personal/images/hero/ip-stamp.png" alt="LZX IP" loading="lazy">
+                                </div>
                                 <div class="stamp-ring"></div>
                             </div>
                             <div class="stamp-info">
@@ -4300,13 +4391,14 @@
                             </div>
                         </div>
 
-                        <!-- 个人标签 -->
+                        <!-- 个人标签邮票 -->
                         <div class="sign-tags">
-                            <span class="tag-chip">&#9733; 天秤座</span>
-                            <span class="tag-chip">&#9836; 独立音乐</span>
-                            <span class="tag-chip">&#127757; 慢旅行</span>
-                            <span class="tag-chip">&#128293; 中二老二次元</span>
-                            <span class="tag-chip">&#128062; 海绵宝宝资深观众</span>
+                            <span class="tag-chip">双子座</span>
+                            <span class="tag-chip">INFJ</span>
+                            <span class="tag-chip">读书</span>
+                            <span class="tag-chip">运动</span>
+                            <span class="tag-chip">爬山</span>
+                            <span class="tag-chip">极限游戏</span>
                         </div>
                     </div>
                 </div>
