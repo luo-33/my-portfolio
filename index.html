@@ -1821,41 +1821,32 @@
             z-index: 1;
         }
 
-        .stamp-photo {
+        .stamp-avatar {
             position: relative;
             flex-shrink: 0;
-            padding: 6px 6px 18px 6px;
-            background: #fff;
-            border-radius: 3px;
-            box-shadow: 0 10px 22px -8px rgba(0, 0, 0, 0.14);
-            /* 暂时取消旋转，排除旋转让头部被祖先裁剪的可能 */
-            transform: none;
-            transition: transform 0.4s ease;
-        }
-
-        .stamp-photo:hover {
-            transform: scale(1.02);
+            padding: 4px;
         }
 
         .stamp-img {
             position: relative;
-            width: 130px;
-            height: 220px;
-            border-radius: 3px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
             background-color: #f3f3f3;
-            background-image: url('personal/images/hero/ip-stamp.png?v=4');
+            background-image: url('personal/images/hero/ip-stamp.png?v=5');
             background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center top;
+            background-size: cover;
+            background-position: center 18%;
             flex-shrink: 0;
-            overflow: visible;
+            box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.18);
+            border: 3px solid #fff;
         }
 
         .stamp-ring {
             position: absolute;
-            inset: -5px;
+            inset: 0;
             border: 1.5px dashed var(--accent);
-            border-radius: 6px;
+            border-radius: 50%;
             animation: ringSpin 20s linear infinite;
             opacity: 0.45;
         }
@@ -1945,8 +1936,7 @@
         @media (max-width: 720px) {
             .contact-sign { padding: 24px 18px; margin-top: 36px; }
             .sign-text { font-size: 0.88rem; }
-            .stamp-photo { padding: 4px 4px 12px 4px; }
-            .stamp-img { width: 100px; height: 170px; }
+            .stamp-img { width: 108px; height: 108px; }
             .stamp-name { font-size: 1rem; }
             .postmark { width: 48px; height: 48px; right: 72px; font-size: 0.45rem; }
         }
@@ -4373,9 +4363,9 @@
                             </p>
                         </div>
 
-                        <!-- IP 形象：明信片照片 -->
+                        <!-- IP 形象：圆形头像 -->
                         <div class="sign-stamp">
-                            <div class="stamp-photo">
+                            <div class="stamp-avatar">
                                 <div class="stamp-img" role="img" aria-label="LZX IP"></div>
                                 <div class="stamp-ring"></div>
                             </div>
