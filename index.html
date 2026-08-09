@@ -1667,6 +1667,94 @@
             height: 14px;
         }
 
+        /* 「此刻 / Right Now」状态卡：填补右列空白 */
+        .contact-card-status {
+            cursor: default;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 14px;
+            padding: 20px 22px;
+            background: linear-gradient(135deg, rgba(255, 253, 249, 0.7) 0%, var(--bg-elevated) 100%);
+            border: 1px dashed var(--line-strong);
+        }
+
+        .contact-card-status:hover::before {
+            opacity: 0;
+        }
+
+        .status-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Georgia', serif;
+            letter-spacing: 1.5px;
+        }
+
+        .status-pulse {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 0 var(--accent);
+            animation: statusPulse 2s ease-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes statusPulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 90, 90, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(220, 90, 90, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 90, 90, 0); }
+        }
+
+        .status-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-soft);
+            text-transform: uppercase;
+        }
+
+        .status-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .status-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            line-height: 1.4;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            border-left: 2px solid var(--accent);
+            transition: all 0.2s ease;
+        }
+
+        .status-list li:hover {
+            background: rgba(255, 255, 255, 0.85);
+            transform: translateX(2px);
+        }
+
+        [data-theme="dark"] .status-list li {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        [data-theme="dark"] .status-list li:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .status-emoji {
+            font-size: 1rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
         .copy-toast {
             position: fixed;
             bottom: 30px;
@@ -1940,93 +2028,6 @@
             background: rgba(255, 255, 255, 0.10);
         }
 
-        /* 签名行 + 个人小档案（填补明信片下方空白） */
-        .sign-extras {
-            margin-top: 18px;
-            padding-top: 14px;
-            border-top: 1px dashed var(--line);
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .sign-signature {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            padding: 4px 0;
-        }
-
-        .sign-pen {
-            font-size: 1.1rem;
-            color: var(--accent);
-            line-height: 1;
-            flex-shrink: 0;
-            transform: rotate(-12deg);
-            margin-top: 2px;
-        }
-
-        .sign-handwriting {
-            font-family: 'Georgia', 'Songti SC', serif;
-            font-size: 0.92rem;
-            font-style: italic;
-            color: var(--text-soft);
-            line-height: 1.55;
-            margin: 0;
-            letter-spacing: 0.02em;
-        }
-
-        .sign-facts {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-
-        .fact-item {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            padding: 10px 8px;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px dashed var(--line);
-            border-radius: 6px;
-            text-align: center;
-            transition: all 0.25s ease;
-        }
-
-        .fact-item:hover {
-            background: rgba(255, 255, 255, 0.85);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        [data-theme="dark"] .fact-item {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-
-        [data-theme="dark"] .fact-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .fact-num {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--text);
-            font-family: 'Georgia', serif;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-
-        .fact-lbl {
-            font-size: 0.66rem;
-            color: var(--text-mute);
-            letter-spacing: 0.08em;
-            line-height: 1.3;
-        }
-
         /* 移动端适配 */
         @media (max-width: 720px) {
             .contact-sign { padding: 24px 18px; margin-top: 36px; }
@@ -2036,8 +2037,6 @@
             .stamp-img { width: 86px; height: 240px; }
             .stamp-name { font-size: 1rem; }
             .postmark { width: 48px; height: 48px; right: 72px; font-size: 0.45rem; }
-            .sign-facts { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-            .sign-handwriting { font-size: 0.85rem; }
         }
 
         /* ============================================
@@ -4485,34 +4484,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- 签名行 + 个人小档案（填补下方空白） -->
-                        <div class="sign-extras">
-                            <div class="sign-signature">
-                                <span class="sign-pen">&#9998;</span>
-                                <p class="sign-handwriting">
-                                    <em>愿每一帧都值得被记录 &middot; capture every frame that matters.</em>
-                                </p>
-                            </div>
-                            <div class="sign-facts">
-                                <div class="fact-item">
-                                    <span class="fact-num">22</span>
-                                    <span class="fact-lbl">岁 &middot; 佛 山</span>
-                                </div>
-                                <div class="fact-item">
-                                    <span class="fact-num">2026</span>
-                                    <span class="fact-lbl">应届 &middot; 本 科</span>
-                                </div>
-                                <div class="fact-item">
-                                    <span class="fact-num">100w+</span>
-                                    <span class="fact-lbl">累计播放</span>
-                                </div>
-                                <div class="fact-item">
-                                    <span class="fact-num">6+</span>
-                                    <span class="fact-lbl">个 人 IP</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -4587,6 +4558,20 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                         </span>
                     </a>
+
+                    <!-- 最近动态：填补右列空白 -->
+                    <div class="contact-card-item contact-card-status reveal" data-delay="2">
+                        <div class="status-head">
+                            <span class="status-pulse"></span>
+                            <span class="status-title">此刻 / Right Now</span>
+                        </div>
+                        <ul class="status-list">
+                            <li><span class="status-emoji">✨</span>心情 &middot; 灵感爆发</li>
+                            <li><span class="status-emoji">📖</span>在读 &middot; 《故事经济学》</li>
+                            <li><span class="status-emoji">🎬</span>在做 &middot; 毕业设计 + 求职作品集</li>
+                            <li><span class="status-emoji">🚀</span>期待 &middot; 内容创意方向的机会</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
