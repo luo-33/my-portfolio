@@ -1654,6 +1654,179 @@
         }
 
         /* ============================================
+           Contact - "灵感时刻" 签名版（填满底部空白）
+           ============================================ */
+        .contact-sign {
+            margin-top: 56px;
+            padding: 32px 28px;
+            background: var(--bg-elevated);
+            border: 1px dashed var(--line-strong);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-sign::before {
+            content: '';
+            position: absolute;
+            left: -20%;
+            bottom: -60%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
+            pointer-events: none;
+            animation: glowMove 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowMove {
+            from { transform: translate(0, 0); }
+            to { transform: translate(20%, -20%); }
+        }
+
+        [data-theme="dark"] .contact-sign {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .sign-quote {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sign-mark {
+            font-size: 56px;
+            line-height: 0.8;
+            color: var(--accent);
+            font-family: 'Georgia', serif;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 6px;
+            opacity: 0.85;
+        }
+
+        .sign-text {
+            color: var(--text-soft);
+            font-size: 0.96rem;
+            line-height: 1.8;
+            margin: 0;
+            font-family: 'Songti SC', 'Georgia', serif;
+            letter-spacing: 0.02em;
+        }
+
+        /* IP 形象小章 */
+        .sign-stamp {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 14px 0;
+            border-top: 1px dashed var(--line);
+            border-bottom: 1px dashed var(--line);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stamp-img {
+            position: relative;
+            width: 72px;
+            height: 72px;
+            flex-shrink: 0;
+        }
+
+        .stamp-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            filter: contrast(1.05) saturate(0.95);
+            position: relative;
+            z-index: 2;
+        }
+
+        .stamp-ring {
+            position: absolute;
+            inset: -6px;
+            border: 1.5px dashed var(--accent);
+            border-radius: 50%;
+            animation: ringSpin 20s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes ringSpin {
+            from { transform: rotate(0); }
+            to { transform: rotate(360deg); }
+        }
+
+        .stamp-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .stamp-label {
+            font-size: 0.7rem;
+            letter-spacing: 3px;
+            color: var(--text-mute);
+            font-weight: 600;
+        }
+
+        .stamp-name {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: 2px;
+            font-family: 'Georgia', serif;
+        }
+
+        .stamp-meta {
+            font-size: 0.75rem;
+            color: var(--text-mute);
+            letter-spacing: 1px;
+        }
+
+        /* 个人标签 chip */
+        .sign-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tag-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 14px;
+            font-size: 0.82rem;
+            background: var(--bg-soft);
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--text-soft);
+            transition: all 0.25s ease;
+        }
+
+        .tag-chip:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
+        [data-theme="dark"] .tag-chip {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        /* 移动端适配 */
+        @media (max-width: 720px) {
+            .contact-sign { padding: 24px 18px; margin-top: 36px; }
+            .sign-text { font-size: 0.9rem; }
+            .stamp-img { width: 56px; height: 56px; }
+        }
+
+        /* ============================================
            Footer - 增强
            ============================================ */
         footer {
@@ -4050,6 +4223,39 @@
                 <div class="contact-left reveal">
                     <h2>来和我<br><span class="it">聊聊</span> 吧 &#9786;</h2>
                     <p>无论是工作机会、项目合作，或者只是想交流创作，都欢迎通过下面的方式找到我。</p>
+
+                    <!-- 灵感时刻：填满底部空白 + 体现 IP -->
+                    <div class="contact-sign reveal" data-delay="2">
+                        <div class="sign-quote">
+                            <span class="sign-mark">&#10077;</span>
+                            <p class="sign-text">
+                                仍在路上的 创意学徒<br>
+                                把脑海里的画面一步步变成可触的成果 &middot; we are on the way
+                            </p>
+                        </div>
+
+                        <!-- IP 形象小章 -->
+                        <div class="sign-stamp">
+                            <div class="stamp-img">
+                                <img src="personal/images/hero/ip-stamp.png" alt="LZX IP" loading="lazy">
+                                <div class="stamp-ring"></div>
+                            </div>
+                            <div class="stamp-info">
+                                <span class="stamp-label">PERSONAL IP</span>
+                                <span class="stamp-name">L &middot; Z &middot; X</span>
+                                <span class="stamp-meta">Character Design 2026</span>
+                            </div>
+                        </div>
+
+                        <!-- 个人标签 -->
+                        <div class="sign-tags">
+                            <span class="tag-chip">&#9733; 天秤座</span>
+                            <span class="tag-chip">&#9836; 独立音乐</span>
+                            <span class="tag-chip">&#127757; 慢旅行</span>
+                            <span class="tag-chip">&#128293; 中二老二次元</span>
+                            <span class="tag-chip">&#128062; 海绵宝宝资深观众</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="contact-cards reveal" data-delay="1">
