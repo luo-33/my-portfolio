@@ -569,6 +569,13 @@
             opacity: 0;
             transform: translateY(30px);
             animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+            /* 艺术字：渐变填充 + 描边 + 辉光 */
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-text-stroke: 1.5px var(--text);
+            filter: drop-shadow(0 6px 24px var(--accent-glow));
         }
 
         .hero-title .accent-word {
@@ -581,6 +588,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             padding-right: 0.05em;
+            -webkit-text-stroke: 0;
         }
 
         .hero-title .accent-word::after {
