@@ -81,120 +81,6 @@
         }
 
         /* ============================================
-           入场片头动画（动漫开场样式）
-           ============================================ */
-        .intro-splash {
-            position: fixed;
-            inset: 0;
-            z-index: 9999;
-            background: #000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.6s ease;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .intro-splash.play {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .intro-splash.fade-out {
-            opacity: 0;
-        }
-
-        .intro-splash.hide {
-            display: none;
-        }
-
-        .intro-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: #000;
-        }
-
-        /* 暗角装饰，增加电影感 */
-        .intro-vignette {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            background:
-                radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.55) 100%),
-                linear-gradient(180deg, rgba(0,0,0,0.35) 0%, transparent 25%, transparent 75%, rgba(0,0,0,0.35) 100%);
-        }
-
-        /* 跳过按钮 */
-        .intro-skip {
-            position: absolute;
-            top: 28px;
-            right: 36px;
-            padding: 10px 22px;
-            background: rgba(255, 255, 255, 0.06);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            border-radius: 999px;
-            cursor: pointer;
-            font-family: inherit;
-            opacity: 0;
-            transition: opacity 0.5s ease, background 0.25s ease;
-            z-index: 2;
-        }
-
-        .intro-splash.play .intro-skip {
-            opacity: 1;
-            transition-delay: 1.5s;
-        }
-
-        .intro-skip:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: #fff;
-        }
-
-        /* 底部进度条 */
-        .intro-progress {
-            position: absolute;
-            left: 50%;
-            bottom: 36px;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.12);
-            overflow: hidden;
-            border-radius: 999px;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 2;
-        }
-
-        .intro-splash.play .intro-progress {
-            opacity: 1;
-        }
-
-        .intro-progress::before {
-            content: '';
-            display: block;
-            width: 0;
-            height: 100%;
-            background: var(--accent);
-            border-radius: inherit;
-            transition: width 0.1s linear;
-        }
-
-        /* 适配移动端 */
-        @media (max-width: 720px) {
-            .intro-skip { padding: 8px 18px; font-size: 0.78rem; }
-            .intro-progress { width: 80px; bottom: 24px; }
-        }
-
-        /* ============================================
            基础重置
            ============================================ */
         *, *::before, *::after {
@@ -569,13 +455,19 @@
             opacity: 0;
             transform: translateY(30px);
             animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
-            /* 艺术字：渐变填充 + 描边 + 辉光 */
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            -webkit-text-stroke: 1.5px var(--text);
-            filter: drop-shadow(0 6px 24px var(--accent-glow));
+            /* 绳绣艺术字：空心粗描边 + 粗糙边缘 + 立体投影 */
+            color: transparent;
+            -webkit-text-stroke: 2.8px var(--text);
+            text-shadow:
+                3px 3px 0 rgba(13, 13, 13, 0.05),
+                6px 6px 0 rgba(13, 13, 13, 0.03);
+            filter: url(#stitch-rough);
+        }
+
+        [data-theme="dark"] .hero-title {
+            text-shadow:
+                3px 3px 0 rgba(242, 239, 232, 0.04),
+                6px 6px 0 rgba(242, 239, 232, 0.02);
         }
 
         .hero-title .accent-word {
@@ -583,25 +475,15 @@
             position: relative;
             font-family: 'Songti SC', 'STSong', 'SimSun', 'Georgia', serif;
             font-weight: 700;
+            /* 重点词用渐变填充，模拟红色线团/纽扣 */
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            padding-right: 0.05em;
             -webkit-text-stroke: 0;
-        }
-
-        .hero-title .accent-word::after {
-            content: '';
-            position: absolute;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            height: 10px;
-            background: var(--accent-gradient);
-            opacity: 0.12;
-            border-radius: 6px;
-            z-index: -1;
+            padding: 0 0.06em;
+            margin: 0 -0.03em;
+            filter: url(#stitch-rough);
         }
 
         .hero-meta {
@@ -3427,6 +3309,16 @@
     </style>
 </head>
 <body>
+    <!-- SVG 滤镜：绳绣/粗糙边缘 -->
+    <svg width="0" height="0" style="position:absolute;pointer-events:none;overflow:hidden;" aria-hidden="true">
+        <defs>
+            <filter id="stitch-rough" x="-25%" y="-25%" width="150%" height="150%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="5" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" />
+            </filter>
+        </defs>
+    </svg>
+
     <!-- 光标光晕 -->
     <div class="cursor-glow" id="cursorGlow"></div>
 
@@ -3455,18 +3347,6 @@
             <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
     </nav>
-
-    <!-- ===== 入场片头动画（动漫开场） ===== -->
-    <div id="introSplash" class="intro-splash" aria-hidden="true">
-        <video id="introVideo" class="intro-video" autoplay muted playsinline preload="auto"
-               src="personal/videos/hero-anim.mp4"
-               poster="personal/images/hero/ip-stamp.png"></video>
-        <div class="intro-vignette"></div>
-        <button class="intro-skip" id="introSkip" aria-label="跳过片头">
-            跳过片头 &nbsp;&rsaquo;
-        </button>
-        <div class="intro-progress" id="introProgress"></div>
-    </div>
 
     <!-- ===== Hero ===== -->
     <header class="hero" id="top">
@@ -4494,85 +4374,6 @@
 
     <!-- ===== JS ===== -->
     <script>
-        // ========== 入场片头动画（动漫开场） ==========
-        (function() {
-            const INTRO_KEY = 'portfolio-intro-seen-v1';
-            const splash = document.getElementById('introSplash');
-            const video = document.getElementById('introVideo');
-            const skip = document.getElementById('introSkip');
-            const progress = document.getElementById('introProgress');
-            if (!splash || !video) return;
-
-            // 首次访问播放片头；会话内不重复
-            const alreadyPlayed = sessionStorage.getItem(INTRO_KEY);
-            if (alreadyPlayed) {
-                splash.classList.add('hide');
-                return;
-            }
-
-            // 启动片头
-            setTimeout(() => {
-                splash.classList.add('play');
-                video.play().catch(() => {
-                    // 自动播放失败，立即结束片头
-                    endIntro();
-                });
-            }, 250);
-
-            let progressRAF;
-            function updateProgress() {
-                if (!video.duration) return;
-                const p = (video.currentTime / video.duration) * 100;
-                progress.style.setProperty('--p', p + '%');
-                progress.firstChild && (progress.firstChild.style.width = p + '%');
-                if (splash.classList.contains('play')) progressRAF = requestAnimationFrame(updateProgress);
-            }
-
-            // 进度条更新（用伪元素 ::before，需要手动更新样式）
-            const progStyle = document.createElement('style');
-            progStyle.textContent = '.intro-progress::before { transition: none !important; }';
-            document.head.appendChild(progStyle);
-
-            video.addEventListener('timeupdate', () => {
-                if (!video.duration) return;
-                const p = (video.currentTime / video.duration) * 100;
-                progress.style.setProperty('--prog', p + '%');
-                progress.querySelector(':scope::before');
-                // 直接修改伪元素不行，改用 inline style 注入
-                progress.style.background = `linear-gradient(to right, var(--accent) 0%, var(--accent) ${p}%, rgba(255,255,255,0.12) ${p}%, rgba(255,255,255,0.12) 100%)`;
-            });
-
-            function endIntro() {
-                if (!splash.classList.contains('play')) return;
-                splash.classList.remove('play');
-                splash.classList.add('fade-out');
-                setTimeout(() => {
-                    splash.classList.add('hide');
-                    sessionStorage.setItem(INTRO_KEY, '1');
-                }, 700);
-            }
-
-            video.addEventListener('ended', endIntro);
-            if (skip) skip.addEventListener('click', (e) => {
-                e.preventDefault();
-                video.pause();
-                endIntro();
-            });
-
-            // Esc 也可跳过
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && splash.classList.contains('play')) {
-                    video.pause();
-                    endIntro();
-                }
-            });
-
-            // 标记起始时间
-            video.addEventListener('loadedmetadata', () => {
-                // 已准备好开始播放
-            });
-        })();
-
         // ========== 光标光晕跟随 ==========
         const cursorGlow = document.getElementById('cursorGlow');
         let mouseX = 0, mouseY = 0;
