@@ -1704,7 +1704,8 @@
             border: 1px dashed var(--line-strong);
             border-radius: 8px;
             position: relative;
-            overflow: hidden;
+            /* 取消 overflow:hidden，避免内部旋转照片被裁 */
+            overflow: visible;
             box-shadow:
                 0 18px 40px -15px rgba(0, 0, 0, 0.08),
                 inset 0 0 0 1px rgba(255, 255, 255, 0.5);
@@ -1827,12 +1828,13 @@
             background: #fff;
             border-radius: 3px;
             box-shadow: 0 10px 22px -8px rgba(0, 0, 0, 0.14);
-            transform: rotate(-3deg);
+            /* 暂时取消旋转，排除旋转让头部被祖先裁剪的可能 */
+            transform: none;
             transition: transform 0.4s ease;
         }
 
         .stamp-photo:hover {
-            transform: rotate(0deg) scale(1.02);
+            transform: scale(1.02);
         }
 
         .stamp-img {
@@ -1854,7 +1856,6 @@
             display: block;
             position: relative;
             z-index: 2;
-            padding-top: 4px;
         }
 
         .stamp-ring {
