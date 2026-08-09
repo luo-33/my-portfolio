@@ -993,6 +993,31 @@
             opacity: 0.2;
         }
 
+        /* 时间线分组标签（如"学校经历"） */
+        .tl-section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin: 28px 0 16px;
+            padding: 7px 14px 7px 10px;
+            font-family: 'Georgia', 'Songti SC', serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            color: var(--text);
+            background: linear-gradient(135deg, rgba(255, 253, 249, 0.7), var(--bg-elevated));
+            border: 1px dashed var(--line-strong);
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 0 4px 12px -6px rgba(0, 0, 0, 0.08);
+        }
+
+        .tl-section-arrow {
+            color: var(--accent);
+            font-size: 0.78rem;
+            line-height: 1;
+        }
+
         .tl-item {
             position: relative;
             padding-bottom: 60px;
@@ -3867,6 +3892,39 @@
                     <p class="tl-role">档案整理人员</p>
                     <ul class="tl-points">
                         <li>档案的整理与归档，在有条不紊的节奏中完成相关工作</li>
+                    </ul>
+                </div>
+
+                <!-- 学校经历（新增） -->
+                <div class="tl-section-label reveal" data-delay="1">
+                    <span class="tl-section-arrow">▶</span>
+                    <span>学校经历</span>
+                </div>
+
+                <div class="tl-item reveal" data-delay="1">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
+                    <h3 class="tl-company">辅导员办公室助理</h3>
+                    <ul class="tl-points">
+                        <li>协助辅导员完成学生事务管理、活动组织及资料整理，提高部门工作效率。</li>
+                    </ul>
+                </div>
+
+                <div class="tl-item reveal" data-delay="2">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
+                    <h3 class="tl-company">社团联合会事务部干事</h3>
+                    <ul class="tl-points">
+                        <li>参与校园马拉松、迎新晚会等大型活动策划及执行，负责活动流程协调及现场管理。</li>
+                    </ul>
+                </div>
+
+                <div class="tl-item reveal" data-delay="3">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
+                    <h3 class="tl-company">"百千万"工程项目成员</h3>
+                    <ul class="tl-points">
+                        <li>深入乡村开展政策宣传与助学贷款政策入户调研，负责参与调研资料整理与总结分析。</li>
                     </ul>
                 </div>
             </div>
