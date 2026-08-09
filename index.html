@@ -447,43 +447,82 @@
         }
 
         .hero-title {
-            font-size: clamp(2.6rem, 7vw, 6rem);
-            font-weight: 800;
-            line-height: 0.98;
-            letter-spacing: -0.04em;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
             margin-bottom: 24px;
             opacity: 0;
             transform: translateY(30px);
             animation: heroIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
-            /* 绳绣艺术字：空心粗描边 + 粗糙边缘 + 立体投影 */
-            color: transparent;
-            -webkit-text-stroke: 2.8px var(--text);
-            text-shadow:
-                3px 3px 0 rgba(13, 13, 13, 0.05),
-                6px 6px 0 rgba(13, 13, 13, 0.03);
-            filter: url(#stitch-rough);
         }
 
-        [data-theme="dark"] .hero-title {
-            text-shadow:
-                3px 3px 0 rgba(242, 239, 232, 0.04),
-                6px 6px 0 rgba(242, 239, 232, 0.02);
+        /* 罗子欣：绳绣艺术字图片（白底用 blend 隐去，只显绳字） */
+        .hero-name-art {
+            width: clamp(300px, 44vw, 600px);
+            height: auto;
+            margin-bottom: 2px;
+            mix-blend-mode: multiply;
+            filter: drop-shadow(0 10px 26px rgba(0, 0, 0, 0.08));
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+            transform: translateZ(0);
         }
 
-        .hero-title .accent-word {
+        .hero-name-art:hover {
+            transform: translateY(-8px) scale(1.015);
+            filter: drop-shadow(0 20px 40px rgba(200, 75, 75, 0.22));
+        }
+
+        [data-theme="dark"] .hero-name-art {
+            mix-blend-mode: screen;
+            filter: invert(1) hue-rotate(180deg) drop-shadow(0 10px 26px rgba(0, 0, 0, 0.5));
+        }
+
+        [data-theme="dark"] .hero-name-art:hover {
+            filter: invert(1) hue-rotate(180deg) drop-shadow(0 20px 40px rgba(255, 107, 107, 0.3));
+        }
+
+        /* 创意内容创作者：放大网页文字 + 绳绣描边 */
+        .hero-sub {
             display: inline-block;
-            position: relative;
-            font-family: 'Songti SC', 'STSong', 'SimSun', 'Georgia', serif;
-            font-weight: 700;
-            /* 重点词用渐变填充，模拟红色线团/纽扣 */
+            font-size: clamp(2.1rem, 5.2vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--text);
+            text-shadow: 3px 3px 0 rgba(13, 13, 13, 0.05);
+            filter: url(#stitch-rough);
+            transition: filter 0.4s ease;
+            will-change: transform;
+        }
+
+        [data-theme="dark"] .hero-sub {
+            text-shadow: 3px 3px 0 rgba(242, 239, 232, 0.04);
+        }
+
+        .hero-sub:hover {
+            filter: url(#stitch-rough) drop-shadow(0 6px 18px var(--accent-glow));
+        }
+
+        .hero-sub .ch {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(22px) rotate(3deg);
+            animation: chPop 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .hero-sub .ch.sp { width: 0.32em; }
+
+        .hero-sub .hl {
             background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             -webkit-text-stroke: 0;
-            padding: 0 0.06em;
-            margin: 0 -0.03em;
-            filter: url(#stitch-rough);
+        }
+
+        @keyframes chPop {
+            to { opacity: 1; transform: translateY(0) rotate(0); }
         }
 
         .hero-meta {
@@ -3358,8 +3397,10 @@
                         <span class="label">Portfolio · 2026</span>
                     </div>
                     <h1 class="hero-title">
-                        罗子欣<br>
-                        <span class="accent-word">创意</span> 内容创作者
+                        <img class="hero-name-art" src="personal/images/hero/luozixin-name.png" alt="罗子欣">
+                        <span class="hero-sub" id="heroSub" aria-label="创意内容创作者">
+                            <span class="ch">创</span><span class="ch">意</span><span class="ch sp"></span><span class="ch">内</span><span class="ch">容</span><span class="ch hl">创</span><span class="ch hl">作</span><span class="ch hl">者</span>
+                        </span>
                     </h1>
 
                     <div class="hero-meta">
@@ -4733,6 +4774,26 @@
                 if (img) openLightbox(img.src);
             });
         });
+
+        // ========== Hero 标题交互 ==========
+        // 1) 副标题逐字进场（错峰延迟）
+        document.querySelectorAll('#heroSub .ch').forEach((ch, i) => {
+            ch.style.animationDelay = (0.45 + i * 0.07) + 's';
+        });
+        // 2) 鼠标视差：副标题随光标轻微偏移
+        const heroSec = document.querySelector('.hero');
+        const heroSub = document.getElementById('heroSub');
+        if (heroSec && heroSub) {
+            heroSec.addEventListener('mousemove', (e) => {
+                const r = heroSec.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width - 0.5;
+                const y = (e.clientY - r.top) / r.height - 0.5;
+                heroSub.style.transform = `translate(${x * 12}px, ${y * 8}px)`;
+            });
+            heroSec.addEventListener('mouseleave', () => {
+                heroSub.style.transform = '';
+            });
+        }
     </script>
 </body>
 </html>

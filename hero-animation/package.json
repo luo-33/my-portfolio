@@ -1,0 +1,21 @@
+{
+  "name": "hero-animation",
+  "version": "1.0.0",
+  "description": "罗子欣作品集 Hero 动漫开场动画",
+  "scripts": {
+    "render": "remotion render HeroAnimation out/hero.mp4",
+    "render-preview": "remotion render HeroAnimation out/hero-preview.mp4 --width=960 --height=540",
+    "render-frame": "remotion still HeroAnimation out/hero-frame.png --frame=180",
+    "studio": "remotion studio"
+  },
+  "keywords": ["remotion", "animation", "portfolio"],
+  "author": "罗子欣",
+  "license": "ISC",
+  "devDependencies": {
+    "@remotion/bundler": "^4.0.507",
+    "@remotion/cli": "^4.0.507",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "remotion": "^4.0.507"
+  }
+}
