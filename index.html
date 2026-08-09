@@ -789,11 +789,12 @@
 
         .about-avatar .avatar-3d-wrap {
             width: 180px;
+            height: 220px;
         }
 
         .about-avatar .avatar-3d {
-            height: auto;
-            aspect-ratio: 1 / 1;
+            height: 100%;
+            aspect-ratio: unset;
         }
 
         .avatar-meta {
@@ -910,7 +911,7 @@
         @media (max-width: 720px) {
             .about-grid { grid-template-columns: 1fr; gap: 32px; }
             .about-avatar { flex-direction: row; gap: 18px; align-items: center; }
-            .about-avatar .avatar-3d-wrap { width: 100px; }
+            .about-avatar .avatar-3d-wrap { width: 100px; height: 120px; }
             .about-stats { grid-template-columns: repeat(2, 1fr); }
             .about-left p { font-size: 1.15rem; }
         }
@@ -2297,7 +2298,7 @@
 
         .avatar-3d {
             position: relative;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 1.15;
             border-radius: 20px;
             overflow: hidden;
             transform-style: preserve-3d;
@@ -2330,6 +2331,19 @@
             object-fit: cover;
             display: block;
             transform: translateZ(20px);
+        }
+
+        .avatar-3d::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 60%,
+                rgba(0, 0, 0, 0.3) 100%
+            );
+            z-index: 2;
+            transform: translateZ(30px);
         }
 
         .avatar-3d::after {
@@ -3451,7 +3465,7 @@
                             <div class="ip-ring ip-ring-1"></div>
                             <div class="ip-ring ip-ring-2"></div>
                             <div class="ip-face" id="ipFace">
-                                <img src="personal/images/微信图片_20260706111311_160_1.jpg" alt="罗子欣" loading="lazy">
+                                <img src="personal/images/ip-avatar.png" alt="罗子欣" loading="lazy">
                             </div>
                             <span class="ip-name">L &middot; Z &middot; X</span>
                         </div>
@@ -3495,7 +3509,7 @@
                 <div class="about-avatar reveal">
                     <div class="avatar-3d-wrap">
                         <div class="avatar-3d" id="avatar3d">
-                            <img src="personal/images/ip-avatar.png" alt="罗子欣" loading="lazy">
+                            <img src="personal/images/微信图片_20260706111311_160_1.jpg" alt="罗子欣" loading="lazy">
                         </div>
                     </div>
                     <div class="avatar-meta">
