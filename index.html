@@ -2854,6 +2854,41 @@
             transition: all 0.3s ease;
         }
 
+        /* 视频参与角色标签 */
+        .video-card .v-role {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .video-card .v-role .v-role-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .video-card .v-role .role-chip {
+            display: inline-flex;
+            align-items: center;
+            padding: 3px 9px;
+            font-size: 0.72rem;
+            color: var(--text-soft);
+            background: var(--bg-soft);
+            border: 1px dashed var(--line-strong);
+            border-radius: 999px;
+            transition: all 0.25s ease;
+        }
+
+        .video-card:hover .v-role .role-chip {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-1px);
+        }
+
         .video-card:hover .v-size {
             background: var(--accent-soft);
             color: var(--accent);
@@ -3969,6 +4004,12 @@
                             <div class="v-num">/ 01 &middot; TEAM</div>
                             <h3>增城文旅宣传片</h3>
                             <p>增城区文旅宣传 &middot; 团队合作 &middot; 区一等奖</p>
+                            <div class="v-role">
+                                <span class="v-role-label">担任</span>
+                                <span class="role-chip">策划</span>
+                                <span class="role-chip">编导</span>
+                                <span class="role-chip">拍摄</span>
+                            </div>
                             <span class="v-size">23 MB</span>
                         </div>
                     </div>
@@ -4020,6 +4061,14 @@
                             <div class="v-num">/ 04 &middot; TEAM</div>
                             <h3>哇哈哈宣传片</h3>
                             <p>品牌宣传 &middot; 团队合作</p>
+                            <div class="v-role">
+                                <span class="v-role-label">担任</span>
+                                <span class="role-chip">策划</span>
+                                <span class="role-chip">编导</span>
+                                <span class="role-chip">拍摄</span>
+                                <span class="role-chip">出演</span>
+                                <span class="role-chip">剪辑</span>
+                            </div>
                             <span class="v-size">30 MB</span>
                         </div>
                     </div>
@@ -4111,6 +4160,13 @@
                             <div class="v-num">/ 01 &middot; SELF</div>
                             <h3>毕业 VLOG</h3>
                             <p>个人记录 &middot; 毕业纪念</p>
+                            <div class="v-role">
+                                <span class="v-role-label">担任</span>
+                                <span class="role-chip">策划</span>
+                                <span class="role-chip">拍摄</span>
+                                <span class="role-chip">剪辑</span>
+                                <span class="role-chip">出演</span>
+                            </div>
                             <span class="v-size">95 MB &middot; MOV</span>
                         </div>
                     </div>
@@ -4128,6 +4184,13 @@
                             <div class="v-num">/ 02 &middot; SELF</div>
                             <h3>海边自制短片</h3>
                             <p>个人创作 &middot; 海边记录</p>
+                            <div class="v-role">
+                                <span class="v-role-label">担任</span>
+                                <span class="role-chip">策划</span>
+                                <span class="role-chip">拍摄</span>
+                                <span class="role-chip">剪辑</span>
+                                <span class="role-chip">出演</span>
+                            </div>
                             <span class="v-size">42 MB</span>
                         </div>
                     </div>
@@ -4145,6 +4208,13 @@
                             <div class="v-num">/ 03 &middot; SELF</div>
                             <h3>旅游短片</h3>
                             <p>个人记录 &middot; 旅行回忆</p>
+                            <div class="v-role">
+                                <span class="v-role-label">担任</span>
+                                <span class="role-chip">策划</span>
+                                <span class="role-chip">拍摄</span>
+                                <span class="role-chip">剪辑</span>
+                                <span class="role-chip">出演</span>
+                            </div>
                             <span class="v-size">11 MB</span>
                         </div>
                     </div>
@@ -4162,6 +4232,13 @@
                             <div class="v-num">/ 04 &middot; SELF</div>
                             <h3>爬山短片</h3>
                             <p>个人记录 &middot; 户外登山</p>
+                            <div class="v-role">
+                                <span class="v-role-label">担任</span>
+                                <span class="role-chip">策划</span>
+                                <span class="role-chip">拍摄</span>
+                                <span class="role-chip">剪辑</span>
+                                <span class="role-chip">出演</span>
+                            </div>
                             <span class="v-size">5.7 MB</span>
                         </div>
                     </div>
