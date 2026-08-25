@@ -26,6 +26,7 @@
         --accent-2: #e8934a;
         --accent-soft: rgba(220, 90, 90, 0.10);
         --accent-gradient: linear-gradient(135deg, #dc5a5a, #e8934a);
+        --accent-glow: rgba(220, 90, 90, 0.28);
         --shadow: 0 20px 50px -20px rgba(21, 21, 21, 0.18);
         --radius: 16px;
         --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -40,6 +41,7 @@
         --line: rgba(255, 255, 255, 0.08);
         --line-strong: rgba(255, 255, 255, 0.14);
         --accent-soft: rgba(220, 90, 90, 0.16);
+        --accent-glow: rgba(220, 90, 90, 0.35);
         --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -85,7 +87,7 @@
         background: var(--accent-gradient);
         box-shadow: 0 0 12px var(--accent);
     }
-    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links { display: flex; gap: 4px; list-style: none; align-items: center; }
     .nav-links a {
         padding: 8px 14px;
         font-size: 0.85rem;
@@ -161,16 +163,47 @@
     }
     .hero-stat .l { font-size: 0.78rem; color: var(--text-mute); letter-spacing: 0.04em; }
 
-    /* ===== 视频网格 ===== */
-    .section-head { margin-bottom: 36px; }
-    .section-kicker {
-        font-family: 'Georgia', serif;
-        font-style: italic;
-        color: var(--text-mute);
-        font-size: 0.92rem;
-        letter-spacing: 0.02em;
-        margin-top: 4px;
+    /* ===== 分类筛选 ===== */
+    .filter-bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+        padding: 14px;
+        background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
     }
+    .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.86rem;
+        font-weight: 600;
+        color: var(--text-soft);
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        cursor: pointer;
+        font-family: inherit;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .filter-btn:hover { color: var(--text); background: var(--bg-soft); }
+    .filter-btn.active {
+        color: #fff;
+        background: var(--accent-gradient);
+        box-shadow: 0 6px 18px var(--accent-glow);
+    }
+    .filter-count {
+        font-size: 0.78rem;
+        color: var(--text-mute);
+        margin-left: auto;
+        padding-right: 8px;
+    }
+
+    /* ===== 视频网格 ===== */
+    .section-head { margin-bottom: 28px; }
     .video-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -185,9 +218,15 @@
         position: relative;
         box-shadow: 0 8px 24px -14px rgba(21, 21, 21, 0.12);
         transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        animation: cardIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
+    @keyframes cardIn {
+        from { opacity: 0; transform: translateY(18px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .video-card.hidden { display: none; }
     .video-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
         box-shadow: var(--shadow);
         border-color: var(--line-strong);
     }
@@ -203,20 +242,20 @@
         display: block;
         transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .video-card:hover .video-cover img { transform: scale(1.05); }
+    .video-card:hover .video-cover img { transform: scale(1.06); }
     .vc-overlay {
         position: absolute;
         inset: 0;
         display: grid;
         place-items: center;
-        background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.35) 100%);
+        background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.35) 100%);
         transition: background 0.3s ease;
     }
     .vc-play {
         width: 54px; height: 54px;
         border-radius: 50%;
         display: grid; place-items: center;
-        background: rgba(255, 255, 255, 0.9);
+        background: rgba(255, 255, 255, 0.92);
         color: #151515;
         font-size: 18px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
@@ -250,6 +289,17 @@
         background: rgba(0, 0, 0, 0.55);
         padding: 3px 8px;
         border-radius: 6px;
+    }
+    .vc-cat {
+        position: absolute;
+        bottom: 12px; left: 12px;
+        font-size: 0.62rem;
+        letter-spacing: 0.06em;
+        color: #fff;
+        background: rgba(220, 90, 90, 0.85);
+        padding: 3px 9px;
+        border-radius: 999px;
+        backdrop-filter: blur(4px);
     }
     .v-info { padding: 15px 16px 17px; }
     .v-num {
@@ -325,6 +375,36 @@
         font-weight: 600;
         z-index: 1;
     }
+    .player-meta {
+        position: absolute;
+        top: 44px; left: 16px;
+        padding: 4px 10px;
+        background: rgba(220, 90, 90, 0.8);
+        color: #fff;
+        font-size: 0.66rem;
+        border-radius: 999px;
+        letter-spacing: 0.05em;
+        z-index: 1;
+    }
+    /* 播放器相邻切换 */
+    .player-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+        transition: all 0.25s ease;
+        z-index: 3;
+    }
+    .player-nav:hover { background: var(--accent); }
+    .player-nav.prev { left: 14px; }
+    .player-nav.next { right: 14px; }
 
     /* ===== Footer ===== */
     footer {
@@ -344,6 +424,9 @@
         .hero { padding: 130px 0 40px; }
         .video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
         .hero-stats { gap: 22px; }
+        .filter-bar { border-radius: 20px; }
+        .filter-btn { padding: 7px 12px; font-size: 0.8rem; }
+        .filter-count { display: none; }
     }
     @media (max-width: 400px) {
         .video-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -374,17 +457,18 @@
         <h1>实习期间 <span class="it">短视频</span> 作品</h1>
         <p>在珠海沙盒网络实习期间，面向 TikTok / YouTube / Facebook 海外渠道创作的短视频内容。每一支都经历过选题、脚本、拍摄到剪辑发布的完整流程。</p>
         <div class="hero-stats">
-            <div class="hero-stat"><span class="n" id="statTotal">24</span><div class="l">支视频</div></div>
+            <div class="hero-stat"><span class="n" id="statTotal">0</span><div class="l">支视频</div></div>
             <div class="hero-stat"><span class="n">TikTok</span><div class="l">海外渠道</div></div>
-            <div class="hero-stat"><span class="n">100W+</span><div class="l">累计播放</div></div>
+            <div class="hero-stat"><span class="n" id="statTotalSec">0</span><div class="l">总时长</div></div>
         </div>
     </div>
 </header>
 
 <section class="wrap">
     <div class="section-head">
-        <h2 class="section-kicker" style="font-size:1.05rem;font-style:normal;font-weight:700;color:var(--text);">全部作品 <span style="color:var(--text-mute);font-weight:400;">/ 点击封面播放</span></h2>
+        <h2 style="font-size:1.05rem;font-weight:700;color:var(--text);">全部作品 <span style="color:var(--text-mute);font-weight:400;">/ 点击封面播放</span></h2>
     </div>
+    <div class="filter-bar" id="filterBar"></div>
     <div class="video-grid" id="videoGrid"></div>
 </section>
 
@@ -395,105 +479,180 @@
 <div class="player-overlay" id="playerOverlay" role="dialog" aria-modal="true" aria-label="视频播放">
     <div class="player-box">
         <div class="player-title" id="playerTitle"></div>
+        <div class="player-meta" id="playerMeta"></div>
         <button class="player-close" id="playerClose" aria-label="关闭">&#10005;</button>
+        <button class="player-nav prev" id="playerPrev" aria-label="上一个">&#10094;</button>
+        <button class="player-nav next" id="playerNext" aria-label="下一个">&#10095;</button>
         <video id="playerVideo" controls playsinline preload="none"></video>
     </div>
 </div>
 
 <script>
-    // 视频清单（文件名 = 压缩视频ID，封面同 ID）
-    var VIDEOS = [
-        "7545746663671860535",
-        "7551327330405322039",
-        "7553117372605943095",
-        "7554354224939797773",
-        "7555825871299284238",
-        "7555831443608407310",
-        "7559554587221314830",
-        "7559890550913027383",
-        "7560509698198211854",
-        "7561629808002633015",
-        "7562145906045324558",
-        "7562154881146965303",
-        "7563623969891323150",
-        "7564699412153306381",
-        "7567338086716263693",
-        "7569936505334926605",
-        "7569937775135345934",
-        "7572519315740708110",
-        "7576103565266078989",
-        "7577997977902501175",
-        "7580335029918780727",
-        "7585515219787500855",
-        "7587984002003258638",
-        "7589874533666966839"
+    // ===== 数据：分类 + 视频清单（名 = 文件名，时长秒） =====
+    var CATEGORIES = [
+        { key: 'all', name: '全部', count: 0 },
+        { key: 'game', name: '游戏内容', count: 0 },
+        { key: 'highlight', name: '活动切片', count: 0 },
+        { key: 'fashion', name: '时尚主题', count: 0 },
+        { key: 'ai', name: 'AI / 其他', count: 0 }
     ];
+    var VIDEOS = [
+        { name: '新游戏介绍', cat: 'game', dur: 22 },
+        { name: '新游戏介绍-2', cat: 'game', dur: 13 },
+        { name: '新游戏介绍-3', cat: 'game', dur: 21 },
+        { name: '新游戏介绍-4', cat: 'game', dur: 27 },
+        { name: '新游戏介绍-5', cat: 'game', dur: 22 },
+        { name: '新游戏介绍-6', cat: 'game', dur: 59 },
+        { name: '新游戏介绍-7', cat: 'game', dur: 27 },
+        { name: '新游戏介绍-8', cat: 'game', dur: 31 },
+        { name: '游戏玩法', cat: 'game', dur: 32 },
+        { name: '精彩片段切片', cat: 'highlight', dur: 47 },
+        { name: '精彩片段切片-2', cat: 'highlight', dur: 24 },
+        { name: '精彩片段切片-3', cat: 'highlight', dur: 72 },
+        { name: '精彩片段切片-4', cat: 'highlight', dur: 58 },
+        { name: '精彩片段切片-5', cat: 'highlight', dur: 80 },
+        { name: '周年庆', cat: 'highlight', dur: 88 },
+        { name: '时装周', cat: 'fashion', dur: 41 },
+        { name: '时装周-2', cat: 'fashion', dur: 46 },
+        { name: '时装周-3', cat: 'fashion', dur: 32 },
+        { name: '鬼灭之刃服装', cat: 'fashion', dur: 41 },
+        { name: 'AI 视频', cat: 'ai', dur: 42 },
+        { name: 'AI 视频-2', cat: 'ai', dur: 19 },
+        { name: '圣诞节', cat: 'ai', dur: 23 },
+        { name: '圣诞节-2', cat: 'ai', dur: 47 },
+        { name: '采访', cat: 'ai', dur: 57 }
+    ];
+    var CAT_NAME = { game: '游戏内容', highlight: '活动切片', fashion: '时尚主题', ai: 'AI / 其他' };
 
-    var grid = document.getElementById('videoGrid');
-    var overlay = document.getElementById('playerOverlay');
-    var pv = document.getElementById('playerVideo');
-    var pTitle = document.getElementById('playerTitle');
-    var pClose = document.getElementById('playerClose');
+    // ===== 统计 =====
+    var totalSec = 0;
+    VIDEOS.forEach(function (v) { totalSec += v.dur; });
+    CATEGORIES.forEach(function (c) {
+        if (c.key !== 'all') c.count = VIDEOS.filter(function (v) { return v.cat === c.key; }).length;
+        else c.count = VIDEOS.length;
+    });
 
     function fmtDur(sec) {
-        if (!sec) return '00:00';
         var m = Math.floor(sec / 60);
-        var s = Math.floor(sec % 60);
+        var s = sec % 60;
         return (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
     }
 
-    // 渲染卡片（只加载封面图，视频不预加载——保证流畅）
-    VIDEOS.forEach(function (id, i) {
-        var card = document.createElement('div');
-        card.className = 'video-card';
-        card.innerHTML =
-            '<div class="video-cover">' +
-                '<img src="personal/images/covers/practise/' + id + '.jpg" alt="实习视频 ' + (i + 1) + '" loading="lazy">' +
-                '<div class="vc-overlay"><span class="vc-play">&#9654;</span></div>' +
-                '<span class="vc-idx">' + String(i + 1).padStart(2, '0') + '</span>' +
-                '<span class="vc-dur">' + fmtDur(0) + '</span>' +
-            '</div>' +
-            '<div class="v-info">' +
-                '<div class="v-num">/ ' + String(i + 1).padStart(2, '0') + ' &middot; PRACTISE</div>' +
-                '<h3>实习短视频 ' + (i + 1) + '</h3>' +
-                '<p>TikTok 海外内容</p>' +
-            '</div>';
-        // 点击打开播放器（此时才设置 src 并加载）
-        card.addEventListener('click', function () {
-            pv.src = 'personal/practise-video/' + id + '.mp4';
-            pv.poster = 'personal/images/covers/practise/' + id + '.jpg';
-            pTitle.textContent = '实习短视频 ' + (i + 1) + ' / ' + VIDEOS.length;
-            overlay.classList.add('open');
-            // 延迟加载保证动画流畅
-            setTimeout(function () { pv.play().catch(function () { }); }, 120);
+    // ===== 渲染分类筛选 =====
+    var filterBar = document.getElementById('filterBar');
+    CATEGORIES.forEach(function (c) {
+        var btn = document.createElement('button');
+        btn.className = 'filter-btn' + (c.key === 'all' ? ' active' : '');
+        btn.dataset.cat = c.key;
+        btn.textContent = c.name + ' ' + c.count;
+        btn.addEventListener('click', function () {
+            filterBar.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            renderGrid(c.key);
         });
-        grid.appendChild(card);
+        filterBar.appendChild(btn);
     });
+    var countEl = document.createElement('span');
+    countEl.className = 'filter-count';
+    countEl.textContent = '点击封面即可播放';
+    filterBar.appendChild(countEl);
 
+    // ===== 渲染网格 =====
+    var grid = document.getElementById('videoGrid');
+    var currentIdx = -1;
+    var currentCat = 'all';
+
+    function visibleList(cat) {
+        return VIDEOS.map(function (v, i) { return { v: v, i: i }; })
+            .filter(function (x) { return cat === 'all' || x.v.cat === cat; });
+    }
+
+    function renderGrid(cat) {
+        currentCat = cat;
+        grid.innerHTML = '';
+        var list = visibleList(cat);
+        list.forEach(function (x, pos) {
+            var v = x.v, i = x.i;
+            var card = document.createElement('div');
+            card.className = 'video-card';
+            card.dataset.index = i;
+            card.style.animationDelay = (pos * 0.04) + 's';
+            card.innerHTML =
+                '<div class="video-cover">' +
+                    '<img src="personal/images/covers/practise/' + v.name + '.jpg" alt="' + v.name + '" loading="lazy">' +
+                    '<div class="vc-overlay"><span class="vc-play">&#9654;</span></div>' +
+                    '<span class="vc-idx">' + String(pos + 1).padStart(2, '0') + '</span>' +
+                    '<span class="vc-dur">' + fmtDur(v.dur) + '</span>' +
+                    '<span class="vc-cat">' + CAT_NAME[v.cat] + '</span>' +
+                '</div>' +
+                '<div class="v-info">' +
+                    '<div class="v-num">/ ' + String(pos + 1).padStart(2, '0') + ' &middot; PRACTISE</div>' +
+                    '<h3>' + v.name + '</h3>' +
+                    '<p>TikTok 海外内容</p>' +
+                '</div>';
+            card.addEventListener('click', function () { openPlayer(i, true); });
+            grid.appendChild(card);
+        });
+    }
+
+    // ===== 播放器 =====
+    var overlay = document.getElementById('playerOverlay');
+    var pv = document.getElementById('playerVideo');
+    var pTitle = document.getElementById('playerTitle');
+    var pMeta = document.getElementById('playerMeta');
+    var pClose = document.getElementById('playerClose');
+    var pPrev = document.getElementById('playerPrev');
+    var pNext = document.getElementById('playerNext');
+
+    function openPlayer(idx, autoplay) {
+        currentIdx = idx;
+        var v = VIDEOS[idx];
+        pv.src = 'personal/practise-video/' + v.name + '.mp4';
+        pv.poster = 'personal/images/covers/practise/' + v.name + '.jpg';
+        pTitle.textContent = v.name;
+        pMeta.textContent = CAT_NAME[v.cat] + ' &middot; ' + fmtDur(v.dur);
+        overlay.classList.add('open');
+        if (autoplay) setTimeout(function () { pv.play().catch(function () { }); }, 120);
+    }
     function closePlayer() {
         pv.pause();
         pv.removeAttribute('src');
         pv.load();
         overlay.classList.remove('open');
     }
+    function movePlayer(dir) {
+        var list = visibleList(currentCat);
+        if (list.length === 0) return;
+        var pos = list.findIndex(function (x) { return x.i === currentIdx; });
+        var next = list[(pos + dir + list.length) % list.length];
+        openPlayer(next.i, true);
+    }
     pClose.addEventListener('click', closePlayer);
+    pPrev.addEventListener('click', function () { movePlayer(-1); });
+    pNext.addEventListener('click', function () { movePlayer(1); });
     overlay.addEventListener('click', function (e) { if (e.target === overlay) closePlayer(); });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePlayer(); });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closePlayer();
+        if (e.key === 'ArrowLeft' && overlay.classList.contains('open')) movePlayer(-1);
+        if (e.key === 'ArrowRight' && overlay.classList.contains('open')) movePlayer(1);
+    });
 
-    // 主题切换
-    var btn = document.getElementById('themeBtn');
-    btn.addEventListener('click', function () {
+    // ===== 主题切换 =====
+    document.getElementById('themeBtn').addEventListener('click', function () {
         var cur = document.documentElement.getAttribute('data-theme');
         document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
     });
 
-    // 统计动画
+    // ===== 首屏动画 =====
+    renderGrid('all');
     var st = document.getElementById('statTotal');
-    var target = VIDEOS.length;
+    var sts = document.getElementById('statTotalSec');
     var t0 = performance.now();
     function tick(t) {
-        var p = Math.min(1, (t - t0) / 900);
-        st.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        var p = Math.min(1, (t - t0) / 1000);
+        var e = 1 - Math.pow(1 - p, 3);
+        st.textContent = Math.round(VIDEOS.length * e);
+        sts.textContent = fmtDur(Math.round(totalSec * e));
         if (p < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
