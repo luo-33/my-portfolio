@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实习短视频 · 罗子欣</title>
+<meta name="description" content="罗子欣实习期间制作的短视频作品集，海外 TikTok 内容方向。">
+<script>
+    (function () {
+        var h = new Date().getHours();
+        var dark = (h >= 22 || h < 7);
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    })();
+</script>
+<style>
+    :root {
+        --bg: #F9F8F6;
+        --bg-elevated: #FFFFFF;
+        --bg-soft: #F1EFEA;
+        --text: #151515;
+        --text-soft: #4a4a4a;
+        --text-mute: #8a8a85;
+        --line: rgba(21, 21, 21, 0.08);
+        --line-strong: rgba(21, 21, 21, 0.14);
+        --accent: #dc5a5a;
+        --accent-2: #e8934a;
+        --accent-soft: rgba(220, 90, 90, 0.10);
+        --accent-gradient: linear-gradient(135deg, #dc5a5a, #e8934a);
+        --shadow: 0 20px 50px -20px rgba(21, 21, 21, 0.18);
+        --radius: 16px;
+        --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    [data-theme="dark"] {
+        --bg: #0a0a0a;
+        --bg-elevated: #141414;
+        --bg-soft: #1d1d1d;
+        --text: #f2efe8;
+        --text-soft: #b8b4ac;
+        --text-mute: #7a7670;
+        --line: rgba(255, 255, 255, 0.08);
+        --line-strong: rgba(255, 255, 255, 0.14);
+        --accent-soft: rgba(220, 90, 90, 0.16);
+        --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font);
+        line-height: 1.6;
+        overflow-x: hidden;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+    body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+    /* ===== 导航 ===== */
+    .nav {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 34px;
+        background: color-mix(in srgb, var(--bg) 78%, transparent);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--line);
+        transition: background 0.3s ease;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 9px; font-weight: 800; letter-spacing: 0.02em; }
+    .nav-logo-dot {
+        width: 9px; height: 9px; border-radius: 50%;
+        background: var(--accent-gradient);
+        box-shadow: 0 0 12px var(--accent);
+    }
+    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links a {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        color: var(--text-soft);
+        text-decoration: none;
+        border-radius: 999px;
+        transition: all 0.25s ease;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--bg-soft); }
+    .nav-links a.back { color: var(--accent); font-weight: 700; }
+    .theme-toggle {
+        width: 40px; height: 40px;
+        display: grid; place-items: center;
+        border: 1px solid var(--line-strong);
+        border-radius: 50%;
+        background: var(--bg-elevated);
+        cursor: pointer;
+        color: var(--text);
+        transition: all 0.3s ease;
+    }
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); transform: rotate(20deg); }
+    .theme-toggle svg { width: 17px; height: 17px; }
+    [data-theme="light"] .icon-moon { display: none; }
+    [data-theme="dark"] .icon-sun { display: none; }
+
+    /* ===== Hero ===== */
+    .hero {
+        padding: 150px 0 56px;
+        position: relative;
+    }
+    .hero-eyebrow {
+        display: inline-flex; align-items: center; gap: 10px;
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        font-size: 0.9rem;
+        color: var(--accent);
+        margin-bottom: 22px;
+        letter-spacing: 0.04em;
+    }
+    .line-deco { width: 34px; height: 1.5px; background: var(--accent); display: inline-block; }
+    .hero h1 {
+        font-size: clamp(2.4rem, 5.5vw, 4rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        margin-bottom: 18px;
+    }
+    .hero h1 .it {
+        font-family: 'Songti SC', 'STSong', serif;
+        font-style: italic;
+        font-weight: 700;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero p {
+        max-width: 560px;
+        color: var(--text-soft);
+        font-size: 1.02rem;
+    }
+    .hero-stats {
+        display: flex;
+        gap: 38px;
+        margin-top: 34px;
+        flex-wrap: wrap;
+    }
+    .hero-stat .n {
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: 'Georgia', serif;
+        color: var(--text);
+    }
+    .hero-stat .l { font-size: 0.78rem; color: var(--text-mute); letter-spacing: 0.04em; }
+
+    /* ===== 视频网格 ===== */
+    .section-head { margin-bottom: 36px; }
+    .section-kicker {
+        font-family: 'Georgia', serif;
+        font-style: italic;
+        color: var(--text-mute);
+        font-size: 0.92rem;
+        letter-spacing: 0.02em;
+        margin-top: 4px;
+    }
+    .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 22px;
+    }
+    .video-card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 8px 24px -14px rgba(21, 21, 21, 0.12);
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow);
+        border-color: var(--line-strong);
+    }
+    .video-cover {
+        position: relative;
+        aspect-ratio: 9 / 16;
+        background: #000;
+        overflow: hidden;
+    }
+    .video-cover img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .video-card:hover .video-cover img { transform: scale(1.05); }
+    .vc-overlay {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.35) 100%);
+        transition: background 0.3s ease;
+    }
+    .vc-play {
+        width: 54px; height: 54px;
+        border-radius: 50%;
+        display: grid; place-items: center;
+        background: rgba(255, 255, 255, 0.9);
+        color: #151515;
+        font-size: 18px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        transform: scale(0.85);
+        opacity: 0.9;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .video-card:hover .vc-play {
+        transform: scale(1);
+        background: #fff;
+        box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
+    }
+    .vc-idx {
+        position: absolute;
+        top: 12px; left: 12px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(6px);
+        padding: 4px 9px;
+        border-radius: 999px;
+    }
+    .vc-dur {
+        position: absolute;
+        bottom: 12px; right: 12px;
+        font-family: 'Courier New', monospace;
+        font-size: 0.68rem;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.55);
+        padding: 3px 8px;
+        border-radius: 6px;
+    }
+    .v-info { padding: 15px 16px 17px; }
+    .v-num {
+        font-family: 'Courier New', monospace;
+        font-size: 0.68rem;
+        letter-spacing: 0.1em;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 5px;
+    }
+    .v-info h3 { font-size: 0.96rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 3px; }
+    .v-info p { font-size: 0.78rem; color: var(--text-mute); line-height: 1.5; }
+
+    /* ===== 播放弹层 ===== */
+    .player-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.82);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 24px;
+    }
+    .player-overlay.open { display: flex; }
+    .player-box {
+        position: relative;
+        width: min(480px, 100%);
+        background: #000;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 40px 120px rgba(0, 0, 0, 0.6);
+        animation: popIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes popIn {
+        from { opacity: 0; transform: scale(0.92) translateY(14px); }
+        to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .player-box video {
+        display: block;
+        width: 100%;
+        max-height: 82vh;
+        aspect-ratio: 9 / 16;
+        background: #000;
+        object-fit: contain;
+    }
+    .player-close {
+        position: absolute;
+        top: 14px; right: 14px;
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        backdrop-filter: blur(6px);
+        transition: all 0.25s ease;
+        z-index: 2;
+    }
+    .player-close:hover { background: var(--accent); transform: rotate(90deg); }
+    .player-title {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        padding: 14px 62px 10px 16px;
+        background: linear-gradient(180deg, rgba(0,0,0,0.6), transparent);
+        color: #fff;
+        font-size: 0.85rem;
+        font-weight: 600;
+        z-index: 1;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+        padding: 48px 0 40px;
+        border-top: 1px solid var(--line);
+        margin-top: 80px;
+        text-align: center;
+        color: var(--text-mute);
+        font-size: 0.82rem;
+    }
+
+    /* ===== 响应式 ===== */
+    @media (max-width: 720px) {
+        .wrap { padding: 0 18px; }
+        .nav { padding: 14px 18px; }
+        .nav-links a { padding: 6px 9px; font-size: 0.78rem; }
+        .hero { padding: 130px 0 40px; }
+        .video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .hero-stats { gap: 22px; }
+    }
+    @media (max-width: 400px) {
+        .video-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-logo">
+        <span class="nav-logo-dot"></span>
+        <span>实习短视频</span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="index.html" class="back">&#8592; 返回作品集</a></li>
+        <li>
+            <button class="theme-toggle" id="themeBtn" aria-label="切换主题">
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+        </li>
+    </ul>
+</nav>
+
+<header class="hero">
+    <div class="wrap">
+        <div class="hero-eyebrow"><span class="line-deco"></span> Internship Practice</div>
+        <h1>实习期间 <span class="it">短视频</span> 作品</h1>
+        <p>在珠海沙盒网络实习期间，面向 TikTok / YouTube / Facebook 海外渠道创作的短视频内容。每一支都经历过选题、脚本、拍摄到剪辑发布的完整流程。</p>
+        <div class="hero-stats">
+            <div class="hero-stat"><span class="n" id="statTotal">24</span><div class="l">支视频</div></div>
+            <div class="hero-stat"><span class="n">TikTok</span><div class="l">海外渠道</div></div>
+            <div class="hero-stat"><span class="n">100W+</span><div class="l">累计播放</div></div>
+        </div>
+    </div>
+</header>
+
+<section class="wrap">
+    <div class="section-head">
+        <h2 class="section-kicker" style="font-size:1.05rem;font-style:normal;font-weight:700;color:var(--text);">全部作品 <span style="color:var(--text-mute);font-weight:400;">/ 点击封面播放</span></h2>
+    </div>
+    <div class="video-grid" id="videoGrid"></div>
+</section>
+
+<footer>
+    <div class="wrap">&copy; 2026 罗子欣 &middot; 实习短视频作品集</div>
+</footer>
+
+<div class="player-overlay" id="playerOverlay" role="dialog" aria-modal="true" aria-label="视频播放">
+    <div class="player-box">
+        <div class="player-title" id="playerTitle"></div>
+        <button class="player-close" id="playerClose" aria-label="关闭">&#10005;</button>
+        <video id="playerVideo" controls playsinline preload="none"></video>
+    </div>
+</div>
+
+<script>
+    // 视频清单（文件名 = 压缩视频ID，封面同 ID）
+    var VIDEOS = [
+        "7545746663671860535",
+        "7551327330405322039",
+        "7553117372605943095",
+        "7554354224939797773",
+        "7555825871299284238",
+        "7555831443608407310",
+        "7559554587221314830",
+        "7559890550913027383",
+        "7560509698198211854",
+        "7561629808002633015",
+        "7562145906045324558",
+        "7562154881146965303",
+        "7563623969891323150",
+        "7564699412153306381",
+        "7567338086716263693",
+        "7569936505334926605",
+        "7569937775135345934",
+        "7572519315740708110",
+        "7576103565266078989",
+        "7577997977902501175",
+        "7580335029918780727",
+        "7585515219787500855",
+        "7587984002003258638",
+        "7589874533666966839"
+    ];
+
+    var grid = document.getElementById('videoGrid');
+    var overlay = document.getElementById('playerOverlay');
+    var pv = document.getElementById('playerVideo');
+    var pTitle = document.getElementById('playerTitle');
+    var pClose = document.getElementById('playerClose');
+
+    function fmtDur(sec) {
+        if (!sec) return '00:00';
+        var m = Math.floor(sec / 60);
+        var s = Math.floor(sec % 60);
+        return (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+    }
+
+    // 渲染卡片（只加载封面图，视频不预加载——保证流畅）
+    VIDEOS.forEach(function (id, i) {
+        var card = document.createElement('div');
+        card.className = 'video-card';
+        card.innerHTML =
+            '<div class="video-cover">' +
+                '<img src="personal/images/covers/practise/' + id + '.jpg" alt="实习视频 ' + (i + 1) + '" loading="lazy">' +
+                '<div class="vc-overlay"><span class="vc-play">&#9654;</span></div>' +
+                '<span class="vc-idx">' + String(i + 1).padStart(2, '0') + '</span>' +
+                '<span class="vc-dur">' + fmtDur(0) + '</span>' +
+            '</div>' +
+            '<div class="v-info">' +
+                '<div class="v-num">/ ' + String(i + 1).padStart(2, '0') + ' &middot; PRACTISE</div>' +
+                '<h3>实习短视频 ' + (i + 1) + '</h3>' +
+                '<p>TikTok 海外内容</p>' +
+            '</div>';
+        // 点击打开播放器（此时才设置 src 并加载）
+        card.addEventListener('click', function () {
+            pv.src = 'personal/practise-video/' + id + '.mp4';
+            pv.poster = 'personal/images/covers/practise/' + id + '.jpg';
+            pTitle.textContent = '实习短视频 ' + (i + 1) + ' / ' + VIDEOS.length;
+            overlay.classList.add('open');
+            // 延迟加载保证动画流畅
+            setTimeout(function () { pv.play().catch(function () { }); }, 120);
+        });
+        grid.appendChild(card);
+    });
+
+    function closePlayer() {
+        pv.pause();
+        pv.removeAttribute('src');
+        pv.load();
+        overlay.classList.remove('open');
+    }
+    pClose.addEventListener('click', closePlayer);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closePlayer(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closePlayer(); });
+
+    // 主题切换
+    var btn = document.getElementById('themeBtn');
+    btn.addEventListener('click', function () {
+        var cur = document.documentElement.getAttribute('data-theme');
+        document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+    });
+
+    // 统计动画
+    var st = document.getElementById('statTotal');
+    var target = VIDEOS.length;
+    var t0 = performance.now();
+    function tick(t) {
+        var p = Math.min(1, (t - t0) / 900);
+        st.textContent = Math.round(target * (1 - Math.pow(1 - p, 3)));
+        if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+</script>
+</body>
+</html>

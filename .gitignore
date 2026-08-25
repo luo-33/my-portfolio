@@ -12,3 +12,6 @@ inject_covers.py
 
 # 片头动画源项目（remotion，含 node_modules，不入仓库）
 hero-animation/
+
+# 实习视频源文件（已压缩至 personal/practise-video/，不入仓库）
+/Practise-video/

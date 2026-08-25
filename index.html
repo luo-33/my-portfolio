@@ -394,7 +394,7 @@
             .nav-logo { padding-right: 8px; font-size: 0.85rem; }
             .nav-logo span { display: none; }
             .nav-links a { padding: 6px 10px; font-size: 0.78rem; }
-            .nav-links a:nth-child(4), .nav-links a:nth-child(5) { display: none; }
+            .nav-links a:nth-child(2), .nav-links a:nth-child(4), .nav-links a:nth-child(5) { display: none; }
         }
 
         /* ============================================
@@ -1241,6 +1241,21 @@
             height: 3px;
             background: var(--accent-gradient);
             border-radius: 3px;
+        }
+
+        /* 实习短视频入口链接 */
+        .works-tab-link {
+            text-decoration: none;
+            cursor: pointer;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+        .works-tab-link:hover {
+            opacity: 0.75;
+            transform: translateY(-1px);
         }
 
         @media (max-width: 720px) {
@@ -3666,6 +3681,7 @@
             <li><a href="#works">作品</a></li>
             <li><a href="#skills">技能</a></li>
             <li><a href="#contact">联系</a></li>
+            <li><a href="practise.html">实习</a></li>
         </ul>
         <button class="theme-toggle" id="themeBtn" aria-label="切换主题">
             <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -3982,6 +3998,7 @@
                 <button class="works-tab" data-tab="design">平面设计</button>
                 <button class="works-tab" data-tab="posters">公众号排版</button>
                 <button class="works-tab" data-tab="photo">摄影作品</button>
+                <a class="works-tab works-tab-link" href="practise.html">实习短视频 &#8599;</a>
             </div>
 
             <!-- 视频作品 -->
