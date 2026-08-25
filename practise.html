@@ -206,8 +206,9 @@
     .section-head { margin-bottom: 28px; }
     .video-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        grid-template-columns: repeat(3, minmax(0, 250px));
+        justify-content: center;
+        gap: 48px;
     }
     .video-card {
         background: var(--bg-elevated);
@@ -422,7 +423,7 @@
         .nav { padding: 14px 18px; }
         .nav-links a { padding: 6px 9px; font-size: 0.78rem; }
         .hero { padding: 130px 0 40px; }
-        .video-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .video-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
         .hero-stats { gap: 22px; }
         .filter-bar { border-radius: 20px; }
         .filter-btn { padding: 7px 12px; font-size: 0.8rem; }
