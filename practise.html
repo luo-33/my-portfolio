@@ -206,8 +206,8 @@
     .section-head { margin-bottom: 28px; }
     .video-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 22px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
     }
     .video-card {
         background: var(--bg-elevated);
@@ -270,50 +270,50 @@
     }
     .vc-idx {
         position: absolute;
-        top: 12px; left: 12px;
+        top: 14px; left: 14px;
         font-family: 'Courier New', monospace;
-        font-size: 0.7rem;
+        font-size: 0.72rem;
         letter-spacing: 0.1em;
         color: #fff;
-        background: rgba(0, 0, 0, 0.45);
+        background: rgba(0, 0, 0, 0.5);
         backdrop-filter: blur(6px);
-        padding: 4px 9px;
+        padding: 5px 10px;
         border-radius: 999px;
     }
     .vc-dur {
         position: absolute;
-        bottom: 12px; right: 12px;
+        bottom: 14px; right: 14px;
         font-family: 'Courier New', monospace;
-        font-size: 0.68rem;
+        font-size: 0.72rem;
         color: #fff;
-        background: rgba(0, 0, 0, 0.55);
-        padding: 3px 8px;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 4px 9px;
         border-radius: 6px;
     }
     .vc-cat {
         position: absolute;
-        bottom: 12px; left: 12px;
-        font-size: 0.62rem;
+        bottom: 14px; left: 14px;
+        font-size: 0.66rem;
         letter-spacing: 0.06em;
         color: #fff;
-        background: rgba(220, 90, 90, 0.85);
-        padding: 3px 9px;
+        background: rgba(220, 90, 90, 0.88);
+        padding: 4px 10px;
         border-radius: 999px;
         backdrop-filter: blur(4px);
     }
-    .v-info { padding: 15px 16px 17px; }
+    .v-info { padding: 18px 20px 20px; }
     .v-num {
         font-family: 'Courier New', monospace;
-        font-size: 0.68rem;
-        letter-spacing: 0.1em;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
         background: var(--accent-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
     }
-    .v-info h3 { font-size: 0.96rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 3px; }
-    .v-info p { font-size: 0.78rem; color: var(--text-mute); line-height: 1.5; }
+    .v-info h3 { font-size: 1.02rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px; line-height: 1.35; }
+    .v-info p { font-size: 0.82rem; color: var(--text-mute); line-height: 1.55; letter-spacing: 0.02em; }
 
     /* ===== 播放弹层 ===== */
     .player-overlay {
@@ -422,7 +422,7 @@
         .nav { padding: 14px 18px; }
         .nav-links a { padding: 6px 9px; font-size: 0.78rem; }
         .hero { padding: 130px 0 40px; }
-        .video-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .video-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
         .hero-stats { gap: 22px; }
         .filter-bar { border-radius: 20px; }
         .filter-btn { padding: 7px 12px; font-size: 0.8rem; }
