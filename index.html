@@ -3799,6 +3799,66 @@
             .about-left p { font-size: 1.15rem; }
             .about-avatar .avatar-3d-wrap { width: 100px; height: 120px; }
         }
+
+        /* ============================================
+           经历区改版：两栏经历卡 + 要点小标题
+           ============================================ */
+        .timeline { padding-left: 30px; }
+
+        .tl-item {
+            display: grid;
+            grid-template-columns: 176px 1fr;
+            gap: 24px 34px;
+            align-items: start;
+            padding: 26px 30px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            margin-bottom: 18px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+        .tl-item:last-child { padding-bottom: 26px; margin-bottom: 0; }
+        .tl-item:hover { border-color: var(--accent); box-shadow: var(--shadow-glow); }
+        .tl-item.highlight {
+            background: linear-gradient(135deg, var(--accent-soft), transparent 55%), var(--bg-elevated);
+            border-color: var(--accent);
+        }
+        .tl-item::before { border-radius: 18px; }
+
+        .tl-side { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding-top: 3px; }
+        .tl-side .date {
+            font-family: 'Courier New', monospace; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.03em;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .tl-side .badge {
+            padding: 3px 10px; background: var(--accent-gradient-soft); color: var(--accent);
+            border-radius: 6px; font-weight: 600; letter-spacing: 0.06em; font-size: 0.68rem;
+        }
+
+        .tl-main { min-width: 0; }
+        .tl-company { font-size: 1.22rem; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+        .tl-role { font-size: 0.92rem; color: var(--text-soft); margin-bottom: 16px; }
+
+        /* 要点改为「小标题 + 说明」两列，把横向空间用满 */
+        .tl-points li {
+            display: grid; grid-template-columns: 84px 1fr; gap: 14px;
+            padding-left: 0; font-size: 0.95rem; line-height: 1.75;
+        }
+        .tl-points li::before { display: none; }
+        .pt-key { font-size: 0.78rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; padding-top: 4px; }
+
+        .tl-stats { gap: 34px; flex-wrap: wrap; }
+        .tl-dot { left: -30px; top: 31px; }
+
+        @media (max-width: 880px) {
+            .tl-item { grid-template-columns: 1fr; gap: 14px; padding: 22px; }
+            .tl-side { flex-direction: row; align-items: center; gap: 12px; padding-top: 0; }
+            .tl-points li { grid-template-columns: 1fr; gap: 2px; }
+            .pt-key { padding-top: 0; }
+            .tl-dot { top: 25px; }
+            .tl-stats { gap: 22px; }
+        }
     </style>
 </head>
 <body>
@@ -4559,105 +4619,175 @@
             </div>
 
             <div class="timeline">
+                <!-- 教育背景 -->
+                <div class="tl-item reveal">
+                    <span class="tl-dot"></span>
+                    <div class="tl-side">
+                        <span class="date">2022.09 — 2026.06</span>
+                        <span class="badge">教育背景</span>
+                    </div>
+                    <div class="tl-main">
+                        <h3 class="tl-company">广州华立学院 &middot; 网络与新媒体</h3>
+                        <p class="tl-role">全日制本科 &middot; 2026 届毕业生</p>
+                        <ul class="tl-points">
+                            <li><b class="pt-key">主修课程</b>媒介经营管理、摄影摄像、网页设计与制作、数字图像处理、视频剪辑与制作、交互设计、数据分析与可视化、社交媒体运营</li>
+                        </ul>
+                        <div class="tl-tags">
+                            <span class="tl-tag">摄影摄像</span>
+                            <span class="tl-tag">视频剪辑</span>
+                            <span class="tl-tag">网页设计</span>
+                            <span class="tl-tag">数据分析</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-section-label reveal">
+                    <span class="tl-section-arrow">&#9654;</span>
+                    <span>实习经历</span>
+                </div>
+
+                <!-- 核心实习 -->
                 <div class="tl-item highlight reveal">
                     <span class="tl-dot"></span>
-                    <div class="tl-meta">
+                    <div class="tl-side">
                         <span class="date">2025.08 — 2026.01</span>
                         <span class="badge">核心实习</span>
                     </div>
-                    <h3 class="tl-company">珠海沙盒网络科技有限公司</h3>
-                    <p class="tl-role">新媒体运营实习生 &middot; 海外方向</p>
-                    <ul class="tl-points">
-                        <li>深挖游戏核心吸引力，针对 TikTok / YouTube / Facebook 撰写脚本与策划内容</li>
-                        <li>在 Discord 社群与海外玩家持续互动，获取一手素材与反馈</li>
-                        <li>独立完成跨平台视频剪辑、发布、数据复盘全流程</li>
-                    </ul>
-                    <div class="tl-stats">
-                        <div class="tl-stat"><span class="n">100W+</span><span class="l">总播放量</span></div>
-                        <div class="tl-stat"><span class="n">1000+</span><span class="l">粉丝增长</span></div>
-                        <div class="tl-stat"><span class="n">3~4</span><span class="l">周产出条数</span></div>
+                    <div class="tl-main">
+                        <h3 class="tl-company">珠海沙盒网络科技有限公司</h3>
+                        <p class="tl-role">新媒体运营实习生 &middot; 海外方向</p>
+                        <ul class="tl-points">
+                            <li><b class="pt-key">内容策划</b>围绕游戏用户兴趣进行内容策划，负责 TikTok、YouTube、Facebook、Instagram 等海外平台的短视频脚本策划与运营</li>
+                            <li><b class="pt-key">内容产出</b>每周稳定输出 3&ndash;4 条短视频，累计播放量超 100 万，账号累计涨粉 1000+</li>
+                            <li><b class="pt-key">社群运营</b>在 Discord 社群中与游戏玩家保持互动，同步跟进视频素材与游戏活动动态</li>
+                            <li><b class="pt-key">视频制作</b>按平台特性收集与录制素材，独立完成剪辑、字幕包装与发布</li>
+                            <li><b class="pt-key">数据分析</b>定期进行数据复盘，理解受众偏好的内容方向，不断优化视频质量</li>
+                        </ul>
+                        <div class="tl-stats">
+                            <div class="tl-stat"><span class="n">100W+</span><span class="l">海外总播放</span></div>
+                            <div class="tl-stat"><span class="n">1000+</span><span class="l">粉丝增长</span></div>
+                            <div class="tl-stat"><span class="n">3&ndash;4</span><span class="l">周产出条数</span></div>
+                            <div class="tl-stat"><span class="n">4</span><span class="l">覆盖平台</span></div>
+                        </div>
+                        <div class="tl-tags" style="margin-top: 16px;">
+                            <span class="tl-tag">TikTok</span>
+                            <span class="tl-tag">YouTube</span>
+                            <span class="tl-tag">Facebook</span>
+                            <span class="tl-tag">Instagram</span>
+                            <span class="tl-tag">Discord</span>
+                            <span class="tl-tag">脚本策划</span>
+                            <span class="tl-tag">视频剪辑</span>
+                            <span class="tl-tag">数据复盘</span>
+                        </div>
                     </div>
-                    <div class="tl-tags" style="margin-top: 16px;">
-                        <span class="tl-tag">TikTok</span>
-                        <span class="tl-tag">YouTube</span>
-                        <span class="tl-tag">Discord</span>
-                        <span class="tl-tag">视频剪辑</span>
-                        <span class="tl-tag">数据分析</span>
+                </div>
+
+                <!-- 校内联合招生企业 -->
+                <div class="tl-item reveal" data-delay="1">
+                    <span class="tl-dot"></span>
+                    <div class="tl-side">
+                        <span class="date">2023.12 — 2024.12</span>
+                        <span class="badge">校内联合招生</span>
                     </div>
+                    <div class="tl-main">
+                        <h3 class="tl-company">广州华立科技技术学院 &middot; 联合招生企业</h3>
+                        <p class="tl-role">小红书 / 抖音 运营助理</p>
+                        <ul class="tl-points">
+                            <li><b class="pt-key">图片排版</b>负责小红书、抖音账号日常运营，独立完成内容产出、文案编写与图文排版</li>
+                            <li><b class="pt-key">文案设计</b>分析对标账号内容，挖掘热门选题与优质文案，持续优化自身选题方向</li>
+                            <li><b class="pt-key">内容输出</b>每日完成 6 篇以上图文内容产出，依据账号数据反馈调整内容方向，提高账号更新效率与用户互动</li>
+                        </ul>
+                        <div class="tl-stats">
+                            <div class="tl-stat"><span class="n">6+</span><span class="l">日均图文产出</span></div>
+                            <div class="tl-stat"><span class="n">2</span><span class="l">运营平台</span></div>
+                            <div class="tl-stat"><span class="n">12</span><span class="l">个月持续运营</span></div>
+                        </div>
+                        <div class="tl-tags" style="margin-top: 16px;">
+                            <span class="tl-tag">小红书</span>
+                            <span class="tl-tag">抖音</span>
+                            <span class="tl-tag">选题挖掘</span>
+                            <span class="tl-tag">图文排版</span>
+                            <span class="tl-tag">数据反馈</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tl-section-label reveal">
+                    <span class="tl-section-arrow">&#9654;</span>
+                    <span>其他实践</span>
                 </div>
 
                 <div class="tl-item reveal" data-delay="1">
                     <span class="tl-dot"></span>
-                    <div class="tl-meta">
-                        <span class="date">2023.12 — 2024.12</span>
+                    <div class="tl-side">
+                        <span class="date">2023.07 — 2023.09</span>
                     </div>
-                    <h3 class="tl-company">广州华立科技技术学院 &middot; 联合招生企业</h3>
-                    <p class="tl-role">新媒体运营助理</p>
-                    <ul class="tl-points">
-                        <li>负责小红书、抖音账号日常运营，输出内容、文案与排版</li>
-                        <li>对标竞品挖掘优质题材，优化自身内容策略</li>
-                        <li>贴合招生主题完成视频剪辑，发布后吸引有效流量</li>
-                    </ul>
-                    <div class="tl-tags">
-                        <span class="tl-tag">小红书</span>
-                        <span class="tl-tag">抖音</span>
-                        <span class="tl-tag">内容策划</span>
-                        <span class="tl-tag">视频剪辑</span>
+                    <div class="tl-main">
+                        <h3 class="tl-company">佛山高明椰子鸡餐饮企业</h3>
+                        <p class="tl-role">前台兼账号活动运营</p>
+                        <ul class="tl-points">
+                            <li><b class="pt-key">活动运营</b>负责前台接待、店内活动策划与装饰布置</li>
+                            <li><b class="pt-key">内容制作</b>负责新菜品宣传策划与视频拍摄剪辑</li>
+                        </ul>
                     </div>
                 </div>
 
                 <div class="tl-item reveal" data-delay="2">
                     <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2023.07 — 2023.09</span></div>
-                    <h3 class="tl-company">佛山高明椰子鸡餐饮企业</h3>
-                    <p class="tl-role">前台兼账号活动运营</p>
-                    <ul class="tl-points">
-                        <li>前台接待与店内活动策划、装饰布置</li>
-                        <li>负责新菜品宣传策划与视频拍摄剪辑</li>
-                    </ul>
+                    <div class="tl-side">
+                        <span class="date">2022.07 — 2022.09</span>
+                    </div>
+                    <div class="tl-main">
+                        <h3 class="tl-company">佛山荷城智合档案有限公司</h3>
+                        <p class="tl-role">档案整理人员</p>
+                        <ul class="tl-points">
+                            <li><b class="pt-key">资料归档</b>负责档案的整理与归档，在有条不紊的节奏中完成相关工作</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="tl-item reveal" data-delay="3">
-                    <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2022.07 — 2022.09</span></div>
-                    <h3 class="tl-company">佛山荷城智合档案有限公司</h3>
-                    <p class="tl-role">档案整理人员</p>
-                    <ul class="tl-points">
-                        <li>档案的整理与归档，在有条不紊的节奏中完成相关工作</li>
-                    </ul>
-                </div>
-
-                <!-- 学校经历（新增） -->
                 <div class="tl-section-label reveal" data-delay="1">
-                    <span class="tl-section-arrow">▶</span>
+                    <span class="tl-section-arrow">&#9654;</span>
                     <span>学校经历</span>
                 </div>
 
                 <div class="tl-item reveal" data-delay="1">
                     <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
-                    <h3 class="tl-company">辅导员办公室助理</h3>
-                    <ul class="tl-points">
-                        <li>协助辅导员完成学生事务管理、活动组织及资料整理，提高部门工作效率。</li>
-                    </ul>
+                    <div class="tl-side">
+                        <span class="date">2022 — 2024</span>
+                    </div>
+                    <div class="tl-main">
+                        <h3 class="tl-company">辅导员办公室助理</h3>
+                        <ul class="tl-points">
+                            <li><b class="pt-key">学生事务</b>协助辅导员完成学生事务管理、活动组织及资料整理，提高部门工作效率</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="tl-item reveal" data-delay="2">
                     <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
-                    <h3 class="tl-company">社团联合会事务部干事</h3>
-                    <ul class="tl-points">
-                        <li>参与校园马拉松、迎新晚会等大型活动策划及执行，负责活动流程协调及现场管理。</li>
-                    </ul>
+                    <div class="tl-side">
+                        <span class="date">2022 — 2024</span>
+                    </div>
+                    <div class="tl-main">
+                        <h3 class="tl-company">社团联合会事务部干事</h3>
+                        <ul class="tl-points">
+                            <li><b class="pt-key">活动执行</b>参与校园马拉松、迎新晚会等大型活动策划及执行，负责活动流程协调及现场管理</li>
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="tl-item reveal" data-delay="3">
                     <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
-                    <h3 class="tl-company">"百千万"工程项目成员</h3>
-                    <ul class="tl-points">
-                        <li>深入乡村开展政策宣传与助学贷款政策入户调研，负责参与调研资料整理与总结分析。</li>
-                    </ul>
+                    <div class="tl-side">
+                        <span class="date">2022 — 2024</span>
+                    </div>
+                    <div class="tl-main">
+                        <h3 class="tl-company">百千万工程项目成员</h3>
+                        <ul class="tl-points">
+                            <li><b class="pt-key">调研实践</b>深入乡村开展政策宣传与助学贷款政策入户调研，负责调研资料整理与总结分析</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -4747,6 +4877,8 @@
                         <span class="skill-chip">动效设计</span>
                         <span class="skill-chip">脚本策划</span>
                         <span class="skill-chip">视频拍摄</span>
+                        <span class="skill-chip">达芬奇调色</span>
+                        <span class="skill-chip">字幕包装</span>
                     </div>
                 </div>
                 <div class="skill-group reveal" data-delay="1">
@@ -4759,6 +4891,7 @@
                         <span class="skill-chip">海报设计</span>
                         <span class="skill-chip">修图调色</span>
                         <span class="skill-chip">排版设计</span>
+                        <span class="skill-chip">网页设计（DW / VS Code）</span>
                     </div>
                 </div>
                 <div class="skill-group reveal" data-delay="2">
@@ -4784,6 +4917,15 @@
                         <span class="skill-chip">AI 文案</span>
                         <span class="skill-chip">AI 绘画</span>
                         <span class="skill-chip">IP 设计</span>
+                    </div>
+                </div>
+                <div class="skill-group reveal" data-delay="3">
+                    <span class="num">/05</span>
+                    <h4>语言能力</h4>
+                    <div class="skill-list">
+                        <span class="skill-chip">英语（四级）</span>
+                        <span class="skill-chip">普通话（二甲）</span>
+                        <span class="skill-chip">粤语</span>
                     </div>
                 </div>
             </div>
