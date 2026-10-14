@@ -3675,7 +3675,7 @@
             background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 50%), var(--accent-soft), transparent 68%);
         }
         .tl-item:hover::before, .skill-group:hover::before { opacity: 1; }
-        .tl-item > *, .skill-group > * { position: relative; z-index: 1; }
+        .tl-item > *:not(.tl-dot), .skill-group > * { position: relative; z-index: 1; }
 
         /* 5) 灯箱：左右切换 / 计数 / 缩放 */
         .lightbox-nav {
@@ -3777,6 +3777,10 @@
             .works-summary b { font-size: 1.25rem; }
             .works-grid { grid-template-columns: 1fr; gap: 20px; }
         }
+        @media (max-width: 560px) {
+            /* 极窄屏：数据条改两列网格，避免横向溢出 */
+            .works-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; justify-items: center; }
+        }
 
         /* ============================================
            自我介绍瘦身：降低视觉权重
@@ -3849,7 +3853,8 @@
         .pt-key { font-size: 0.78rem; font-weight: 700; color: var(--accent); letter-spacing: 0.02em; padding-top: 4px; }
 
         .tl-stats { gap: 34px; flex-wrap: wrap; }
-        .tl-dot { left: -30px; top: 31px; }
+        /* 圆点必须保持绝对定位：否则会被 grid 当成第一列占位，导致内容全挤在左列 */
+        .tl-dot { position: absolute; left: -30px; top: 31px; }
 
         @media (max-width: 880px) {
             .tl-item { grid-template-columns: 1fr; gap: 14px; padding: 22px; }
