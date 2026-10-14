@@ -401,10 +401,8 @@
            Hero 区 - 增强版
            ============================================ */
         .hero {
-            min-height: 100vh;
-            min-height: 100dvh;
-            padding-top: 120px;
-            padding-bottom: 80px;
+            padding-top: 124px;
+            padding-bottom: 56px;
             display: flex;
             align-items: center;
             position: relative;
@@ -526,7 +524,7 @@
         .hero-meta {
             display: flex;
             gap: 40px;
-            margin-bottom: 36px;
+            margin-bottom: 26px;
             opacity: 0;
             transform: translateY(20px);
             animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
@@ -536,11 +534,11 @@
         .meta-item .val { font-size: 0.95rem; color: var(--text); font-weight: 500; }
 
         .hero-desc {
-            max-width: 540px;
-            font-size: 1.08rem;
-            line-height: 1.85;
+            max-width: 560px;
+            font-size: 1.05rem;
+            line-height: 1.8;
             color: var(--text-soft);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             opacity: 0;
             transform: translateY(20px);
             animation: heroIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
@@ -3744,6 +3742,63 @@
         @media (prefers-reduced-motion: reduce) {
             .click-ripple { display: none; }
         }
+
+        /* ============================================
+           作品前置：视觉权重强化
+           ============================================ */
+        .btn-count {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 32px; height: 20px; padding: 0 8px; margin-left: 2px;
+            border-radius: 999px; background: var(--accent-gradient);
+            color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.02em;
+        }
+
+        .works-summary { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 44px; margin: -14px 0 40px; }
+        .works-summary div { display: flex; align-items: baseline; gap: 8px; }
+        .works-summary b {
+            font-size: 1.55rem; line-height: 1;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .works-summary span { font-size: 0.78rem; color: var(--text-mute); letter-spacing: 0.06em; }
+
+        .tab-count {
+            display: inline-block; margin-left: 7px; padding: 1px 7px; vertical-align: 1px;
+            border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--line);
+            font-size: 0.68rem; font-weight: 600; color: var(--text-mute);
+        }
+        .works-tab.active .tab-count { background: var(--accent); border-color: transparent; color: #fff; }
+
+        /* 作品卡片放大，让作品成为全页最重的部分 */
+        .works-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 28px; }
+
+        @media (max-width: 720px) {
+            .works-summary { gap: 10px 22px; margin: -6px 0 26px; }
+            .works-summary b { font-size: 1.25rem; }
+            .works-grid { grid-template-columns: 1fr; gap: 20px; }
+        }
+
+        /* ============================================
+           自我介绍瘦身：降低视觉权重
+           ============================================ */
+        .about-left p { font-size: 1.2rem; line-height: 1.85; }
+        .about-meta-line {
+            display: flex; flex-wrap: wrap; gap: 8px 18px;
+            margin-top: 22px; padding-top: 18px;
+            border-top: 1px dashed var(--line);
+            font-size: 0.82rem; color: var(--text-mute); letter-spacing: 0.02em;
+        }
+        .about-avatar .avatar-3d-wrap { width: 160px; height: 200px; }
+        .about-stats { gap: 14px; }
+        .stat { padding: 20px 18px; }
+        .stat-num { font-size: 1.9rem; }
+        .stat-label { font-size: 0.75rem; }
+        .stat::before { height: 24px; }
+
+        @media (max-width: 720px) {
+            .about-left p { font-size: 1.15rem; }
+            .about-avatar .avatar-3d-wrap { width: 100px; height: 120px; }
+        }
     </style>
 </head>
 <body>
@@ -3777,9 +3832,9 @@
             <span>罗子欣</span>
         </div>
         <ul class="nav-links">
-            <li><a href="#about">关于</a></li>
-            <li><a href="#experience">经历</a></li>
             <li><a href="#works">作品</a></li>
+            <li><a href="#experience">经历</a></li>
+            <li><a href="#about">关于</a></li>
             <li><a href="#skills">技能</a></li>
             <li><a href="#contact">联系</a></li>
             <li><a href="practise.html">实习</a></li>
@@ -3818,12 +3873,13 @@
                     </div>
 
                     <p class="hero-desc">
-                        网络与新媒体专业应届毕业生。从海外 TikTok 短视频到海报设计，擅长用 <span class="serif" style="font-style: italic; color: var(--accent);">视觉叙事</span> 传递想法。
+                        网络与新媒体 2026 届。做过百万播放的海外短视频，也做平面、排版与摄影 &mdash; 用 <span class="serif" style="font-style: italic; color: var(--accent);">视觉叙事</span> 把想法讲清楚。往下滑，先看作品。
                     </p>
 
                     <div class="hero-cta">
                         <a href="#works" class="btn btn-primary">
                             <span>浏览作品</span>
+                            <span class="btn-count">30+</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
                         </a>
                         <a href="#contact" class="btn btn-ghost">联系我</a>
@@ -3899,206 +3955,30 @@
         </div>
     </div>
 
-    <!-- ===== 关于 ===== -->
-    <section id="about">
-        <div class="wrap">
-            <div class="section-head reveal">
-                <div class="section-index"><span class="num">01</span> <span>/ About</span></div>
-                <div>
-                    <h2 class="section-title">关于 <span class="it">我</span></h2>
-                    <p class="section-kicker">一个喜欢把想法变成画面的人。在视频、平面和新媒体之间游走，记录和创造是日常。</p>
-                </div>
-            </div>
-
-            <div class="about-grid">
-                <div class="about-avatar reveal">
-                    <div class="avatar-3d-wrap">
-                        <div class="avatar-3d" id="avatar3d">
-                            <img src="personal/images/微信图片_20260706111311_160_1.jpg" alt="罗子欣" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="avatar-meta">
-                        <span class="num">/LZX</span> &middot; 2026
-                    </div>
-                </div>
-
-                <div class="about-left reveal" data-delay="1">
-                    <p>
-                        我是 <span class="em">罗子欣</span>，广州华立学院网络与新媒体专业，2026届毕业生。
-                        过去一年的时间里，我在游戏公司负责海外短视频运营，
-                        学会用 <span class="em">数据</span> 和 <span class="em">内容</span> 同时讲故事。
-                    </p>
-                    <p style="margin-top: 24px; font-size: 1.05rem; color: var(--text-soft); line-height: 1.8;">
-                        摄影摄像、视频剪辑、平面设计与 AI 创作，都是我喜爱的工具。希望未来能在内容创意的领域，做一些真正 <span class="em">打动人心</span> 的事。
-                    </p>
-                </div>
-
-                <div class="about-stats reveal" data-delay="2">
-                    <div class="stat">
-                        <div class="stat-num"><span data-count="100">0</span><span class="plus">W+</span></div>
-                        <div class="stat-label">海外视频总播放</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num"><span data-count="1000">0</span><span class="plus">+</span></div>
-                        <div class="stat-label">粉丝增长</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num"><span data-count="30">0</span><span class="plus">+</span></div>
-                        <div class="stat-label">视频与设计作品</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-num"><span data-count="8">0</span><span class="plus">+</span></div>
-                        <div class="stat-label">竞赛奖项</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="edu-bar reveal" data-delay="3">
-                <div class="year-num">2026</div>
-                <div class="edu-text">
-                    <div class="deg">网络与新媒体 &middot; 本科</div>
-                    <div class="school">广州华立学院（原广东工业大学华立学院）</div>
-                </div>
-                <div class="meta">
-                    <span><b>22岁</b> &middot; 广东佛山</span>
-                    <span>共青团员</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== 经历 ===== -->
-    <section id="experience">
-        <div class="wrap">
-            <div class="section-head reveal">
-                <div class="section-index"><span class="num">02</span> <span>/ Experience</span></div>
-                <div>
-                    <h2 class="section-title">经历 &amp; <span class="it">实践</span></h2>
-                    <p class="section-kicker">从校园到职场的几次关键探索。每一次都让我更懂得内容的重量。</p>
-                </div>
-            </div>
-
-            <div class="timeline">
-                <div class="tl-item highlight reveal">
-                    <span class="tl-dot"></span>
-                    <div class="tl-meta">
-                        <span class="date">2025.08 — 2026.01</span>
-                        <span class="badge">核心实习</span>
-                    </div>
-                    <h3 class="tl-company">珠海沙盒网络科技有限公司</h3>
-                    <p class="tl-role">新媒体运营实习生 &middot; 海外方向</p>
-                    <ul class="tl-points">
-                        <li>深挖游戏核心吸引力，针对 TikTok / YouTube / Facebook 撰写脚本与策划内容</li>
-                        <li>在 Discord 社群与海外玩家持续互动，获取一手素材与反馈</li>
-                        <li>独立完成跨平台视频剪辑、发布、数据复盘全流程</li>
-                    </ul>
-                    <div class="tl-stats">
-                        <div class="tl-stat"><span class="n">100W+</span><span class="l">总播放量</span></div>
-                        <div class="tl-stat"><span class="n">1000+</span><span class="l">粉丝增长</span></div>
-                        <div class="tl-stat"><span class="n">3~4</span><span class="l">周产出条数</span></div>
-                    </div>
-                    <div class="tl-tags" style="margin-top: 16px;">
-                        <span class="tl-tag">TikTok</span>
-                        <span class="tl-tag">YouTube</span>
-                        <span class="tl-tag">Discord</span>
-                        <span class="tl-tag">视频剪辑</span>
-                        <span class="tl-tag">数据分析</span>
-                    </div>
-                </div>
-
-                <div class="tl-item reveal" data-delay="1">
-                    <span class="tl-dot"></span>
-                    <div class="tl-meta">
-                        <span class="date">2023.12 — 2024.12</span>
-                    </div>
-                    <h3 class="tl-company">广州华立科技技术学院 &middot; 联合招生企业</h3>
-                    <p class="tl-role">新媒体运营助理</p>
-                    <ul class="tl-points">
-                        <li>负责小红书、抖音账号日常运营，输出内容、文案与排版</li>
-                        <li>对标竞品挖掘优质题材，优化自身内容策略</li>
-                        <li>贴合招生主题完成视频剪辑，发布后吸引有效流量</li>
-                    </ul>
-                    <div class="tl-tags">
-                        <span class="tl-tag">小红书</span>
-                        <span class="tl-tag">抖音</span>
-                        <span class="tl-tag">内容策划</span>
-                        <span class="tl-tag">视频剪辑</span>
-                    </div>
-                </div>
-
-                <div class="tl-item reveal" data-delay="2">
-                    <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2023.07 — 2023.09</span></div>
-                    <h3 class="tl-company">佛山高明椰子鸡餐饮企业</h3>
-                    <p class="tl-role">前台兼账号活动运营</p>
-                    <ul class="tl-points">
-                        <li>前台接待与店内活动策划、装饰布置</li>
-                        <li>负责新菜品宣传策划与视频拍摄剪辑</li>
-                    </ul>
-                </div>
-
-                <div class="tl-item reveal" data-delay="3">
-                    <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2022.07 — 2022.09</span></div>
-                    <h3 class="tl-company">佛山荷城智合档案有限公司</h3>
-                    <p class="tl-role">档案整理人员</p>
-                    <ul class="tl-points">
-                        <li>档案的整理与归档，在有条不紊的节奏中完成相关工作</li>
-                    </ul>
-                </div>
-
-                <!-- 学校经历（新增） -->
-                <div class="tl-section-label reveal" data-delay="1">
-                    <span class="tl-section-arrow">▶</span>
-                    <span>学校经历</span>
-                </div>
-
-                <div class="tl-item reveal" data-delay="1">
-                    <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
-                    <h3 class="tl-company">辅导员办公室助理</h3>
-                    <ul class="tl-points">
-                        <li>协助辅导员完成学生事务管理、活动组织及资料整理，提高部门工作效率。</li>
-                    </ul>
-                </div>
-
-                <div class="tl-item reveal" data-delay="2">
-                    <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
-                    <h3 class="tl-company">社团联合会事务部干事</h3>
-                    <ul class="tl-points">
-                        <li>参与校园马拉松、迎新晚会等大型活动策划及执行，负责活动流程协调及现场管理。</li>
-                    </ul>
-                </div>
-
-                <div class="tl-item reveal" data-delay="3">
-                    <span class="tl-dot"></span>
-                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
-                    <h3 class="tl-company">"百千万"工程项目成员</h3>
-                    <ul class="tl-points">
-                        <li>深入乡村开展政策宣传与助学贷款政策入户调研，负责参与调研资料整理与总结分析。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ===== 作品 ===== -->
     <section id="works">
         <div class="wrap">
             <div class="section-head reveal">
-                <div class="section-index"><span class="num">03</span> <span>/ Works</span></div>
+                <div class="section-index"><span class="num">01</span> <span>/ Selected Works</span></div>
                 <div>
-                    <h2 class="section-title">作品 <span class="it">集锦</span></h2>
-                    <p class="section-kicker">汇集视频与平面设计方向的代表性作品，每一件都源于真实需求。</p>
+                    <h2 class="section-title">精选 <span class="it">作品</span></h2>
+                    <p class="section-kicker">视频、平面、公众号排版、摄影四类共 30 件代表作品，点击任意一张即可放大细看。</p>
                 </div>
             </div>
 
+            <div class="works-summary reveal">
+                <div><b>30</b><span>件作品</span></div>
+                <div><b>4</b><span>个方向</span></div>
+                <div><b>12</b><span>支视频</span></div>
+                <div><b>24</b><span>支实习短视频</span></div>
+                <div><b>2026</b><span>届毕业生</span></div>
+            </div>
+
             <div class="works-tabs reveal">
-                <button class="works-tab active" data-tab="video">视频作品</button>
-                <button class="works-tab" data-tab="design">平面设计</button>
-                <button class="works-tab" data-tab="posters">公众号排版</button>
-                <button class="works-tab" data-tab="photo">摄影作品</button>
+                <button class="works-tab active" data-tab="video">视频作品<span class="tab-count">12</span></button>
+                <button class="works-tab" data-tab="design">平面设计<span class="tab-count">7</span></button>
+                <button class="works-tab" data-tab="posters">公众号排版<span class="tab-count">7</span></button>
+                <button class="works-tab" data-tab="photo">摄影作品<span class="tab-count">4</span></button>
                 <a class="works-tab works-tab-link" href="practise.html">实习短视频 &#8599;</a>
             </div>
 
@@ -4664,6 +4544,182 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ===== 经历 ===== -->
+    <section id="experience">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <div class="section-index"><span class="num">02</span> <span>/ Experience</span></div>
+                <div>
+                    <h2 class="section-title">经历 &amp; <span class="it">实践</span></h2>
+                    <p class="section-kicker">从校园到职场的几次关键探索。每一次都让我更懂得内容的重量。</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="tl-item highlight reveal">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta">
+                        <span class="date">2025.08 — 2026.01</span>
+                        <span class="badge">核心实习</span>
+                    </div>
+                    <h3 class="tl-company">珠海沙盒网络科技有限公司</h3>
+                    <p class="tl-role">新媒体运营实习生 &middot; 海外方向</p>
+                    <ul class="tl-points">
+                        <li>深挖游戏核心吸引力，针对 TikTok / YouTube / Facebook 撰写脚本与策划内容</li>
+                        <li>在 Discord 社群与海外玩家持续互动，获取一手素材与反馈</li>
+                        <li>独立完成跨平台视频剪辑、发布、数据复盘全流程</li>
+                    </ul>
+                    <div class="tl-stats">
+                        <div class="tl-stat"><span class="n">100W+</span><span class="l">总播放量</span></div>
+                        <div class="tl-stat"><span class="n">1000+</span><span class="l">粉丝增长</span></div>
+                        <div class="tl-stat"><span class="n">3~4</span><span class="l">周产出条数</span></div>
+                    </div>
+                    <div class="tl-tags" style="margin-top: 16px;">
+                        <span class="tl-tag">TikTok</span>
+                        <span class="tl-tag">YouTube</span>
+                        <span class="tl-tag">Discord</span>
+                        <span class="tl-tag">视频剪辑</span>
+                        <span class="tl-tag">数据分析</span>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal" data-delay="1">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta">
+                        <span class="date">2023.12 — 2024.12</span>
+                    </div>
+                    <h3 class="tl-company">广州华立科技技术学院 &middot; 联合招生企业</h3>
+                    <p class="tl-role">新媒体运营助理</p>
+                    <ul class="tl-points">
+                        <li>负责小红书、抖音账号日常运营，输出内容、文案与排版</li>
+                        <li>对标竞品挖掘优质题材，优化自身内容策略</li>
+                        <li>贴合招生主题完成视频剪辑，发布后吸引有效流量</li>
+                    </ul>
+                    <div class="tl-tags">
+                        <span class="tl-tag">小红书</span>
+                        <span class="tl-tag">抖音</span>
+                        <span class="tl-tag">内容策划</span>
+                        <span class="tl-tag">视频剪辑</span>
+                    </div>
+                </div>
+
+                <div class="tl-item reveal" data-delay="2">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta"><span class="date">2023.07 — 2023.09</span></div>
+                    <h3 class="tl-company">佛山高明椰子鸡餐饮企业</h3>
+                    <p class="tl-role">前台兼账号活动运营</p>
+                    <ul class="tl-points">
+                        <li>前台接待与店内活动策划、装饰布置</li>
+                        <li>负责新菜品宣传策划与视频拍摄剪辑</li>
+                    </ul>
+                </div>
+
+                <div class="tl-item reveal" data-delay="3">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta"><span class="date">2022.07 — 2022.09</span></div>
+                    <h3 class="tl-company">佛山荷城智合档案有限公司</h3>
+                    <p class="tl-role">档案整理人员</p>
+                    <ul class="tl-points">
+                        <li>档案的整理与归档，在有条不紊的节奏中完成相关工作</li>
+                    </ul>
+                </div>
+
+                <!-- 学校经历（新增） -->
+                <div class="tl-section-label reveal" data-delay="1">
+                    <span class="tl-section-arrow">▶</span>
+                    <span>学校经历</span>
+                </div>
+
+                <div class="tl-item reveal" data-delay="1">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
+                    <h3 class="tl-company">辅导员办公室助理</h3>
+                    <ul class="tl-points">
+                        <li>协助辅导员完成学生事务管理、活动组织及资料整理，提高部门工作效率。</li>
+                    </ul>
+                </div>
+
+                <div class="tl-item reveal" data-delay="2">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
+                    <h3 class="tl-company">社团联合会事务部干事</h3>
+                    <ul class="tl-points">
+                        <li>参与校园马拉松、迎新晚会等大型活动策划及执行，负责活动流程协调及现场管理。</li>
+                    </ul>
+                </div>
+
+                <div class="tl-item reveal" data-delay="3">
+                    <span class="tl-dot"></span>
+                    <div class="tl-meta"><span class="date">2022 — 2024</span></div>
+                    <h3 class="tl-company">"百千万"工程项目成员</h3>
+                    <ul class="tl-points">
+                        <li>深入乡村开展政策宣传与助学贷款政策入户调研，负责参与调研资料整理与总结分析。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== 关于 ===== -->
+    <section id="about">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <div class="section-index"><span class="num">03</span> <span>/ About</span></div>
+                <div>
+                    <h2 class="section-title">关于 <span class="it">我</span></h2>
+                    <p class="section-kicker">作品之外的一点背景 &mdash; 专业、经历，还有手上的工具。</p>
+                </div>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-avatar reveal">
+                    <div class="avatar-3d-wrap">
+                        <div class="avatar-3d" id="avatar3d">
+                            <img src="personal/images/微信图片_20260706111311_160_1.jpg" alt="罗子欣" loading="lazy">
+                        </div>
+                    </div>
+                    <div class="avatar-meta">
+                        <span class="num">/LZX</span> &middot; 2026
+                    </div>
+                </div>
+
+                <div class="about-left reveal" data-delay="1">
+                    <p>
+                        我是 <span class="em">罗子欣</span>，广州华立学院网络与新媒体专业 2026 届毕业生。
+                        过去一年在游戏公司负责海外短视频运营，学会用 <span class="em">数据</span> 和 <span class="em">内容</span> 同时讲故事；
+                        摄影、剪辑、平面与 AI 创作，都是我手上的工具。
+                        希望未来在内容创意领域，做一些真正 <span class="em">打动人心</span> 的事。
+                    </p>
+                    <div class="about-meta-line">
+                        <span>广州华立学院（原广东工业大学华立学院）</span>
+                        <span>22 岁 &middot; 广东佛山</span>
+                        <span>共青团员</span>
+                    </div>
+                </div>
+
+                <div class="about-stats reveal" data-delay="2">
+                    <div class="stat">
+                        <div class="stat-num"><span data-count="100">0</span><span class="plus">W+</span></div>
+                        <div class="stat-label">海外视频总播放</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num"><span data-count="1000">0</span><span class="plus">+</span></div>
+                        <div class="stat-label">粉丝增长</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num"><span data-count="30">0</span><span class="plus">+</span></div>
+                        <div class="stat-label">视频与设计作品</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-num"><span data-count="8">0</span><span class="plus">+</span></div>
+                        <div class="stat-label">竞赛奖项</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -5424,7 +5480,7 @@
         });
 
         // 4) 键盘：数字跳转 / T 切主题 / 左右翻作品图
-        const JUMP = { '1': '#top', '2': '#about', '3': '#experience', '4': '#works', '5': '#skills', '6': '#contact' };
+        const JUMP = { '1': '#top', '2': '#works', '3': '#experience', '4': '#about', '5': '#skills', '6': '#contact' };
         document.addEventListener('keydown', (e) => {
             if (e.metaKey || e.ctrlKey || e.altKey || e.target.closest('input, textarea')) return;
             if (lightbox.classList.contains('active')) {
