@@ -3864,6 +3864,105 @@
             .tl-dot { top: 25px; }
             .tl-stats { gap: 22px; }
         }
+
+        /* ============================================
+           摄影作品：暂未开放（冲洗中）占位
+           ============================================ */
+        .tab-count.pending {
+            background: var(--accent-soft);
+            border-color: var(--accent);
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        .ws-soon {
+            position: relative;
+            padding: 10px;
+            border-radius: 26px;
+            border: 1.5px dashed var(--line-strong);
+            background:
+                radial-gradient(120% 90% at 50% -10%, var(--accent-soft), transparent 62%),
+                var(--bg-elevated);
+            overflow: hidden;
+        }
+
+        /* 上下胶片齿孔条 */
+        .ws-film {
+            height: 18px;
+            border-radius: 5px;
+            background-image: radial-gradient(circle, var(--line-strong) 2.2px, transparent 2.6px);
+            background-size: 20px 100%;
+            background-position: 0 center;
+            opacity: 0.22;
+            animation: wsFilm 16s linear infinite;
+        }
+        @keyframes wsFilm { to { background-position: -20px center; } }
+
+        .ws-body { padding: 34px 30px 40px; text-align: center; }
+
+        .ws-kicker {
+            display: inline-block;
+            font-family: 'Courier New', monospace;
+            font-size: 0.68rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--accent);
+            padding: 6px 14px;
+            border: 1px solid var(--accent);
+            border-radius: 999px;
+            background: var(--accent-soft);
+        }
+
+        .ws-icon {
+            width: 88px; height: 88px; margin: 28px auto 22px;
+            display: grid; place-items: center;
+            color: var(--accent);
+            border-radius: 50%;
+            background: var(--bg-elevated);
+            box-shadow: 0 0 0 1px var(--line), 0 10px 30px -12px var(--accent-glow);
+            transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.55s ease;
+        }
+        .ws-icon svg { width: 42px; height: 42px; }
+        .ws-soon:hover .ws-icon {
+            transform: rotate(-6deg) scale(1.06);
+            box-shadow: 0 0 0 1px var(--accent), 0 16px 40px -14px var(--accent-glow);
+        }
+
+        .ws-title { font-size: 1.72rem; font-weight: 700; letter-spacing: -0.01em; }
+        .ws-title .it { font-family: 'Georgia', serif; font-style: italic; color: var(--accent); }
+        .ws-desc { margin-top: 14px; font-size: 0.96rem; line-height: 1.9; color: var(--text-soft); }
+
+        .ws-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 26px; }
+
+        .ws-tags {
+            display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+            margin-top: 30px; padding-top: 22px;
+            border-top: 1px dashed var(--line);
+        }
+        .ws-tags span {
+            font-family: 'Courier New', monospace;
+            font-size: 0.68rem; letter-spacing: 0.1em;
+            color: var(--text-mute);
+            padding: 4px 10px;
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        .ws-soon:hover .ws-tags span { border-color: var(--line-strong); color: var(--text-soft); }
+
+        .ws-corner { position: absolute; color: var(--accent); opacity: 0.45; font-size: 0.78rem; }
+        .ws-corner.tl { top: 22px; left: 22px; }
+        .ws-corner.br { bottom: 22px; right: 22px; }
+
+        @media (max-width: 720px) {
+            .ws-body { padding: 26px 18px 30px; }
+            .ws-title { font-size: 1.35rem; }
+            .ws-icon { width: 72px; height: 72px; margin: 22px auto 18px; }
+            .ws-icon svg { width: 34px; height: 34px; }
+            .ws-desc br { display: none; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .ws-film { animation: none; }
+        }
     </style>
 </head>
 <body>
@@ -4027,13 +4126,13 @@
                 <div class="section-index"><span class="num">01</span> <span>/ Selected Works</span></div>
                 <div>
                     <h2 class="section-title">精选 <span class="it">作品</span></h2>
-                    <p class="section-kicker">视频、平面、公众号排版、摄影四类共 30 件代表作品，点击任意一张即可放大细看。</p>
+                    <p class="section-kicker">视频、平面与公众号排版共 26 件作品，摄影一组正在整理中，点击任意一张可放大细看。</p>
                 </div>
             </div>
 
             <div class="works-summary reveal">
-                <div><b>30</b><span>件作品</span></div>
-                <div><b>4</b><span>个方向</span></div>
+                <div><b>26</b><span>件作品</span></div>
+                <div><b>3</b><span>个方向</span></div>
                 <div><b>12</b><span>支视频</span></div>
                 <div><b>24</b><span>支实习短视频</span></div>
                 <div><b>2026</b><span>届毕业生</span></div>
@@ -4043,7 +4142,7 @@
                 <button class="works-tab active" data-tab="video">视频作品<span class="tab-count">12</span></button>
                 <button class="works-tab" data-tab="design">平面设计<span class="tab-count">7</span></button>
                 <button class="works-tab" data-tab="posters">公众号排版<span class="tab-count">7</span></button>
-                <button class="works-tab" data-tab="photo">摄影作品<span class="tab-count">4</span></button>
+                <button class="works-tab" data-tab="photo">摄影作品<span class="tab-count pending">筹备中</span></button>
                 <a class="works-tab works-tab-link" href="practise.html">实习短视频 &#8599;</a>
             </div>
 
@@ -4550,6 +4649,49 @@
 
             <!-- 摄影 -->
             <div class="works-pane" data-pane="photo">
+                <div class="ws-soon reveal">
+                    <div class="ws-film" aria-hidden="true"></div>
+
+                    <div class="ws-body">
+                        <span class="ws-kicker">Coming Soon &middot; 冲洗中</span>
+
+                        <div class="ws-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 17h9l3-4h12l3 4h9v21H6z"/>
+                                <circle cx="24" cy="27" r="7.5"/>
+                                <circle cx="24" cy="27" r="2.6"/>
+                                <path d="M37 21h2.5"/>
+                            </svg>
+                        </div>
+
+                        <h3 class="ws-title">摄影作品 &middot; <span class="it">冲洗中</span></h3>
+                        <p class="ws-desc">
+                            这一组照片正在重新筛选与调色，有几张还在返工。<br>
+                            等它们准备好会第一时间放上这里 &mdash; 先看看视频和设计吧。
+                        </p>
+
+                        <div class="ws-actions">
+                            <button type="button" class="btn btn-primary" data-jump-tab="video">
+                                <span>看视频作品</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                            </button>
+                            <button type="button" class="btn btn-ghost" data-jump-tab="design">看平面设计</button>
+                        </div>
+
+                        <div class="ws-tags">
+                            <span>待选片</span>
+                            <span>调色中</span>
+                            <span>35mm</span>
+                            <span>上线时间待定</span>
+                        </div>
+                    </div>
+
+                    <div class="ws-film bottom" aria-hidden="true"></div>
+                    <span class="ws-corner tl">&#10022;</span>
+                    <span class="ws-corner br">&#10022;</span>
+                </div>
+
+                <!-- 原摄影卡片暂时下线（图片重新整理后可恢复）：
                 <div class="works-grid">
                     <div class="image-card wide reveal">
                         <div class="ic-stage">
@@ -4608,6 +4750,7 @@
                         </div>
                     </div>
                 </div>
+                -->
             </div>
         </div>
     </section>
@@ -5681,7 +5824,21 @@
             });
         }
 
-        // 7) 数据卡片悬停：数字重新滚动
+        // 7) 作品区「摄影冲洗中」面板：按钮直接切到对应分类
+        document.querySelectorAll('[data-jump-tab]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = document.querySelector(`.works-tab[data-tab="${btn.dataset.jumpTab}"]`);
+                if (!tab) return;
+                tab.click();
+                const worksSec = document.getElementById('works');
+                if (worksSec) {
+                    const top = worksSec.getBoundingClientRect().top + window.scrollY - 80;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // 8) 数据卡片悬停：数字重新滚动
         document.querySelectorAll('.stat').forEach(stat => {
             stat.addEventListener('mouseenter', () => {
                 const el = stat.querySelector('[data-count]');
